@@ -32,26 +32,6 @@ p {
     margin: 0 auto 30px;
 }
 
-/* Хедер */
-.header {
-    background-color: #000000;
-    color: #F5F5DC;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    opacity: 0;
-    animation: slideDown 0.8s ease forwards;
-}
-
-.logo {
-    font-size: 1.8em;
-    font-weight: 700;
-}
 
 nav a {
     color: #F5F5DC;
@@ -70,6 +50,8 @@ nav a:hover {
     background-image: url('img/wedding-bg.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000000; /* Запасной цвет, если изображение не загрузится */
     background-attachment: fixed; /* Параллакс эффект */
     height: 100vh;
     display: flex;
@@ -606,6 +588,11 @@ footer p:nth-child(2) { animation-delay: 0.4s; }
         font-size: 1.1em;
     }
 
+    .hero {
+        background-attachment: scroll;
+        background-position: center center;
+    }
+
     .hero h1 {
         font-size: clamp(2.5rem, 8vw, 6rem);
     }
@@ -706,5 +693,11 @@ footer p:nth-child(2) { animation-delay: 0.4s; }
 
     .social-links {
         gap: 20px;
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        background-attachment: scroll;
     }
 }
