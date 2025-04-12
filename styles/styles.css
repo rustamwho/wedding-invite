@@ -10,6 +10,7 @@ body {
     background-color: #F5F5DC; /* Бежевый фон */
     color: #000000; /* Черный текст */
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 section {
@@ -50,6 +51,8 @@ nav a:hover {
     height: 100vh;
     overflow: hidden;
     position: relative;
+    isolation: isolate; /* Изолируем контекст наложения */
+    z-index: 1; /* Базовый z-index */
 }
 
 .hero-parallax {
@@ -59,16 +62,14 @@ nav a:hover {
     width: 100%;
     height: 110%; /* Больше контейнера для эффекта */
     z-index: -1;
-    will-change: transform; /* Подсказка браузеру для оптимизации */
-    transform: translateZ(0); /* Включаем аппаратное ускорение */
-    backface-visibility: hidden; /* Дополнительная оптимизация */
+    will-change: transform;
 }
 
 .hero-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: translateZ(0); /* Аппаратное ускорение */
+    display: block; /* Предотвращает лишние пиксели снизу */
 }
 
 .hero::before {
@@ -79,11 +80,12 @@ nav a:hover {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* Полупрозрачный слой */
+    z-index: 0;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -107,6 +109,20 @@ nav a:hover {
     font-size: clamp(3.5rem, 10vw, 10rem);
     font-weight: 400;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-divider {
+    position: relative;
+    height: 2px;
+    background-color: #F5F5DC;
+    z-index: 2;
+}
+
+/* Все остальные секции вынесены в отдельный поток */
+.content-wrapper {
+    position: relative;
+    z-index: 2; /* Выше hero-секции */
+    background-color: #F5F5DC; /* Обеспечиваем непрозрачный фон */
 }
 
 /* Секция приглашения и календаря */
