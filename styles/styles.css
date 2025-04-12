@@ -57,14 +57,18 @@ nav a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 105%; /* Немного больше контейнера */
+    height: 110%; /* Больше контейнера для эффекта */
     z-index: -1;
+    will-change: transform; /* Подсказка браузеру для оптимизации */
+    transform: translateZ(0); /* Включаем аппаратное ускорение */
+    backface-visibility: hidden; /* Дополнительная оптимизация */
 }
 
 .hero-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: translateZ(0); /* Аппаратное ускорение */
 }
 
 .hero::before {
@@ -686,20 +690,13 @@ footer p:nth-child(2) {
         font-size: 1.1em;
     }
 
-    .hero {
-        background-position: center center;
-    }
-
-    .hero h1 {
+    .hero-content h1 {
         font-size: clamp(2.5rem, 8vw, 6rem);
+        padding-top: 35vh; /* На мобильных чуть больше смещение */
     }
 
     .names {
         font-size: clamp(2rem, 7vw, 5rem);
-    }
-
-    .hero-content {
-        padding-top: 35vh; /* На мобильных чуть больше смещение */
     }
 
     .countdown div {
@@ -746,14 +743,6 @@ footer p:nth-child(2) {
         padding: 40px 10px;
     }
 
-    .hero {
-        background-position: center center;
-    }
-
-    .hero-content {
-        padding-top: 50vh; /* На очень маленьких экранах еще больше смещение */
-    }
-
     .countdown {
         gap: 10px;
     }
@@ -794,11 +783,5 @@ footer p:nth-child(2) {
 
     .social-links {
         gap: 20px;
-    }
-}
-
-@supports (-webkit-touch-callout: none) {
-    .hero {
-        background-attachment: scroll;
     }
 }
