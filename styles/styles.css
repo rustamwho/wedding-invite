@@ -47,18 +47,24 @@ nav a:hover {
 
 /* Главная секция */
 .hero {
-    background-image: url('img/wedding-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #000000; /* Запасной цвет, если изображение не загрузится */
-    background-attachment: fixed; /* Параллакс эффект */
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    overflow: hidden;
     position: relative;
+}
+
+.hero-parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 105%; /* Немного больше контейнера */
+    z-index: -1;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero::before {
@@ -74,8 +80,13 @@ nav a:hover {
 .hero-content {
     position: relative;
     z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: #F5F5DC;
-    padding-top: 10vh; /* Смещение адаптируется к высоте экрана */
+    text-align: center;
 }
 
 .hero h1 {
@@ -165,7 +176,7 @@ nav a:hover {
     content: '❤';
     position: absolute;
     font-size: 0.6em;
-    bottom: -2px;  /* Отрицательное значение, чтобы переместить сердечко ниже цифры */
+    bottom: -2px; /* Отрицательное значение, чтобы переместить сердечко ниже цифры */
     width: 100%;
     left: 0;
     text-align: center;
@@ -512,23 +523,45 @@ footer p {
 
 /* Анимации */
 @keyframes slideDown {
-    from { transform: translateY(-100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes scaleIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .animate-fade {
@@ -547,28 +580,93 @@ footer p {
 }
 
 /* Задержки для последовательных анимаций */
-.hero-content h1 { animation-delay: 0.2s; }
-.hero-content .names { animation-delay: 0.4s; }
-.invitation h2 { animation-delay: 0.2s; }
-.invitation p { animation-delay: 0.4s; }
-.invitation .calendar-container { animation-delay: 0.6s; }
-.invitation .countdown { animation-delay: 0.8s; }
-.venue-info h2 { animation-delay: 0.2s; }
-.venue-info p { animation-delay: 0.4s; }
-.venue-info { animation-delay: 0.6s; }
-.venue-info .map-container { animation-delay: 0.8s; }
-.venue-info .time-info { animation-delay: 1s; }
-.dress-code-info h2 { animation-delay: 0.2s; }
-.dress-code-info p { animation-delay: 0.4s; }
-.dress-code-info .color-palette { animation-delay: 0.6s; }
-.dress-code-info .dress-examples { animation-delay: 0.8s; }
-.form-section h2 { animation-delay: 0.2s; }
-.form-section p { animation-delay: 0.4s; }
-.form-section form { animation-delay: 0.6s; }
-.social h2 { animation-delay: 0.2s; }
-.social .social-links { animation-delay: 0.4s; }
-footer p:nth-child(1) { animation-delay: 0.2s; }
-footer p:nth-child(2) { animation-delay: 0.4s; }
+.hero-content h1 {
+    animation-delay: 0.2s;
+}
+
+.hero-content .names {
+    animation-delay: 0.4s;
+}
+
+.invitation h2 {
+    animation-delay: 0.2s;
+}
+
+.invitation p {
+    animation-delay: 0.4s;
+}
+
+.invitation .calendar-container {
+    animation-delay: 0.6s;
+}
+
+.invitation .countdown {
+    animation-delay: 0.8s;
+}
+
+.venue-info h2 {
+    animation-delay: 0.2s;
+}
+
+.venue-info p {
+    animation-delay: 0.4s;
+}
+
+.venue-info {
+    animation-delay: 0.6s;
+}
+
+.venue-info .map-container {
+    animation-delay: 0.8s;
+}
+
+.venue-info .time-info {
+    animation-delay: 1s;
+}
+
+.dress-code-info h2 {
+    animation-delay: 0.2s;
+}
+
+.dress-code-info p {
+    animation-delay: 0.4s;
+}
+
+.dress-code-info .color-palette {
+    animation-delay: 0.6s;
+}
+
+.dress-code-info .dress-examples {
+    animation-delay: 0.8s;
+}
+
+.form-section h2 {
+    animation-delay: 0.2s;
+}
+
+.form-section p {
+    animation-delay: 0.4s;
+}
+
+.form-section form {
+    animation-delay: 0.6s;
+}
+
+.social h2 {
+    animation-delay: 0.2s;
+}
+
+.social .social-links {
+    animation-delay: 0.4s;
+}
+
+footer p:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+footer p:nth-child(2) {
+    animation-delay: 0.4s;
+}
 
 /* Адаптивность */
 @media (max-width: 768px) {

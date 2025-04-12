@@ -127,3 +127,12 @@ document.getElementById('wedding-form').addEventListener('submit', function (e) 
         messageElement.style.display = 'none';
     }, 5000);
 });
+
+window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    const parallaxElement = document.querySelector('.hero-parallax');
+
+    if (parallaxElement && window.innerWidth > 1024) {
+        parallaxElement.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+    }
+});
