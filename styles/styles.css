@@ -73,7 +73,7 @@ h3 {
 
 p {
     font-size: 1.2em;
-    max-width: 800px;
+    max-width: 400px;
     margin: 0 auto 30px;
 }
 
@@ -227,10 +227,10 @@ nav a:hover {
 
 #date {
     display: inline-block;
-    font-size: 4rem; /* увеличенный размер */
+    font-size: 3.5rem; /* увеличенный размер */
     font-weight: bold;
     letter-spacing: 0.05em; /* немного воздуха между цифрами */
-    color: #171b23; /* красивый синий (или свой цвет) */
+    color: #171b23;
     margin-top: 1rem;
     margin-bottom: 2rem;
     text-align: center;
@@ -375,24 +375,119 @@ nav a:hover {
 /*    height: 100%;*/
 /*}*/
 
-/*.time-info {*/
-/*    margin-top: 30px;*/
-/*    padding: 20px;*/
-/*    background: #fff;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);*/
-/*}*/
+/* Расписание */
+.schedule-section {
+    padding: 100px 20px; /* Вертикальный отступ секции */
+    background: transparent;
+    color: #000000;
+    text-align: center;
+}
 
-/*.time-info h3 {*/
-/*    color: #D4A373;*/
-/*}*/
+.schedule-section h2 {
+    font-family: 'Extra light wedding', Arial, sans-serif;
+    font-size: 3em; /* Увеличиваем размер заголовка */
+    margin-bottom: 60px; /* Увеличиваем отступ снизу */
+    color: #000000;
+}
 
-/*.time-info strong {*/
-/*    color: #D4A373;*/
-/*    font-weight: bold;*/
-/*}*/
+.schedule-container {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+}
 
-/* Секция дресс-кода */
+.timeline {
+    position: relative;
+    padding: 5px 0; /* Вертикальный отступ сверху и снизу */
+}
+
+/* Вертикальная линия таймлайна */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px; /* Толщина линии */
+    height: 100%;
+    background: #000000;
+    z-index: 0;
+}
+
+/* Элемент расписания */
+.schedule-item {
+    position: relative;
+    margin: 50px 0; /* Расстояние между точками */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 60px; /* Минимальная высота для каждого элемента, чтобы избежать наложения */
+}
+
+/* Белая точка на линии */
+.schedule-item::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: #000000;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Иконка события (слева от линии) */
+.schedule-icon.left-side {
+    position: absolute;
+    left: 0;
+    right: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    height: 800px;
+    z-index: 2;
+}
+/* Размер иконок с использованием относительных единиц */
+.schedule-img {
+    width: 150px; /* Фиксированный размер */
+    height: 150px;
+    object-fit: contain;
+}
+
+/* Детали события (справа от линии) */
+.schedule-details.right-side {
+    position: absolute;
+    left: 50%;
+    right: 0;
+    padding-left: 20px;
+    text-align: left;
+    z-index: 2;
+}
+
+.schedule-details .time {
+    display: block;
+    font-size: 1.8em; /* Увеличиваем размер времени */
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 10px; /* Увеличиваем отступ между временем и событием */
+}
+
+.schedule-details .event {
+    font-family: 'Extra light wedding', Arial, sans-serif;
+    font-size: 1.5em; /* Увеличиваем размер текста события */
+    color: #000000;
+}
+
+/* Анимации для элементов расписания */
+.schedule-section h2 { animation-delay: 0.2s; }
+.schedule-item:nth-child(1) { animation-delay: 0.4s; }
+.schedule-item:nth-child(2) { animation-delay: 0.6s; }
+.schedule-item:nth-child(3) { animation-delay: 0.8s; }
+.schedule-item:nth-child(4) { animation-delay: 1.0s; }
+.schedule-item:nth-child(5) { animation-delay: 1.2s; }
+
+/* Дресс-код */
 .dress-code-section {
     padding: 80px 20px;
     background: transparent;
@@ -490,7 +585,7 @@ nav a:hover {
 }
 
 form {
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -502,8 +597,7 @@ form {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    /*background: rgba(255, 255, 255, 0.1);*/
-    background-color: #000000;
+    background: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -517,7 +611,7 @@ form {
 .form-field label {
     font-size: 1.1em;
     margin-bottom: 10px;
-    color: #D4A373;
+    color: #ffffff;
 }
 
 .radio-group, .checkbox-group {
@@ -546,7 +640,7 @@ form {
     width: 100%;
     border: 1px solid #D4A373;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
     color: #000000;
     font-size: 1em;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
