@@ -248,18 +248,6 @@ nav a:hover {
     padding: 80px 20px;
 }
 
-#date {
-    display: inline-block;
-    font-size: 3.5rem; /* увеличенный размер */
-    font-weight: bold;
-    letter-spacing: 0.05em; /* немного воздуха между цифрами */
-    color: #171b23;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    animation: fadeInUp 1s ease-in-out;
-}
-
 /* Секция места проведения */
 .venue-section {
     display: flex;
