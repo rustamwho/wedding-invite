@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Felidae';
+    font-family: 'Extra light wedding';
     src: url('fonts/wedding_invitation_extra_light.woff') format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -18,25 +18,43 @@ html, body {
 }
 
 
-/* Фоновое изображение для всей страницы */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Felidae', Arial, sans-serif;
+    font-family: 'Extra light wedding', Arial, sans-serif;
     color: #000000;
     line-height: 1;
     font-weight: 200;
     letter-spacing: 0.07em;
 
-    /* Фоновое изображение */
-    background-image: url('img/background.jpeg');
+    /* Резервный цвет фона */
+    background-color: #F5F5DC;
+}
+
+/* Фоновое изображение для всей страницы */
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+    z-index: -1; /* позади всего */
+
+    background-image: url('img/background.webp');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed; /* Фиксированный фон при прокрутке */
 
-    /* Резервный цвет фона */
-    background-color: #F5F5DC;
+    animation: waveEffect 15s infinite ease-in-out;
+    transform-origin: center center;
+}
+
+@keyframes waveEffect {
+    0% { transform: scale(1.02) rotate(0.8deg) translate(-5px, -2px); }
+    25% { transform: scale(1.03) rotate(-0.8deg) translate(5px, 3px); }
+    50% { transform: scale(1.02) rotate(0.5deg) translate(3px, -5px); }
+    75% { transform: scale(1.03) rotate(-0.5deg) translate(-3px, 4px); }
+    100% { transform: scale(1.02) rotate(0.8deg) translate(-5px, -2px); }
 }
 
 section {
@@ -106,7 +124,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный слой */
+    background: rgba(0, 0, 0, 0.3); /* Полупрозрачный слой */
 }
 
 .hero-content {
@@ -117,12 +135,12 @@ nav a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #F5F5DC;
+    color: #f8f8eb;
     text-align: center;
 }
 
 .hero h1 {
-    font-family: 'Felidae', sans-serif;
+    font-family: 'Extra light wedding', Arial, sans-serif;
     font-size: clamp(2rem, 6vw, 8rem);
     font-weight: 400;
     margin-bottom: 1vh;
@@ -131,7 +149,7 @@ nav a:hover {
 
 /* Стили для имен */
 .names {
-    font-family: 'Felidae', Arial, sans-serif;
+    font-family: 'Extra light wedding', Arial, sans-serif;
     font-size: clamp(3.5rem, 10vw, 10rem);
     font-weight: 400;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -158,7 +176,7 @@ nav a:hover {
     font-family: Arial, sans-serif;
     font-size: 0.9rem;
     color: #F5F5DC; /* Светло-бежевый цвет */
-    opacity: 0.4; /* Лёгкая прозрачность */
+    opacity: 0.5; /* Лёгкая прозрачность */
 }
 
 .hint-arrow {
@@ -209,10 +227,9 @@ nav a:hover {
 #date {
     display: inline-block;
     font-size: 4rem; /* увеличенный размер */
-    /*font-family: 'Felidae', serif;*/
     font-weight: bold;
     letter-spacing: 0.05em; /* немного воздуха между цифрами */
-    color: #2e3a59; /* красивый синий (или свой цвет) */
+    color: #171b23; /* красивый синий (или свой цвет) */
     margin-top: 1rem;
     margin-bottom: 2rem;
     text-align: center;
@@ -236,7 +253,7 @@ nav a:hover {
     max-width: 360px;
     text-align: center;
     color: #fff;
-    font-family: 'Felidae', serif;
+    font-family: 'Extra light wedding', serif;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     animation: slideUp 1s ease-in-out;
     z-index: 1;
@@ -315,7 +332,7 @@ nav a:hover {
 }
 
 .venue-info p {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Extra light wedding', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
@@ -329,7 +346,7 @@ nav a:hover {
     border: 1px solid #fff;
     text-decoration: none;
     color: #fff;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Extra light wedding', sans-serif;
     font-weight: 500;
     transition: all 0.3s ease;
 }
@@ -377,8 +394,8 @@ nav a:hover {
 /* Секция дресс-кода */
 .dress-code-section {
     padding: 80px 20px;
-    background: transparent; /* Фон как везде (прозрачный, как у .venue-section) */
-    color: #000000; /* Чёрный цвет текста */
+    background: transparent;
+    color: #000000;
     text-align: center;
 }
 
@@ -388,7 +405,7 @@ nav a:hover {
 }
 
 .dress-code-info h2 {
-    color: #000000; /* Чёрный цвет для заголовка */
+    color: #000000;
 }
 
 /* Палитра цветов */
@@ -923,5 +940,40 @@ footer p:nth-child(2) {
 
     .social-links {
         gap: 20px;
+    }
+}
+
+/* Медиа-запрос для десктопа */
+@media (min-width: 768px) {
+    .audio-controls {
+        bottom: 100px; /* На десктопе больше отступ снизу */
+        right: 50px;
+    }
+
+    .hint-text {
+        font-size: 1.3rem;
+        opacity: 0.7;
+    }
+
+    .hint-arrow {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Для маленьких экранов с низкой высотой */
+@media (max-height: 600px) {
+    .audio-controls {
+        bottom: 60px; /* Ещё меньше отступ снизу */
+        right: 20px;
+    }
+
+    .hint-text {
+        font-size: 0.8rem; /* Уменьшаем текст */
+    }
+
+    .hint-arrow {
+        width: 14px;
+        height: 14px;
     }
 }
