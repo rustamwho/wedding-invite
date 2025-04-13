@@ -10,16 +10,26 @@ function updateCountdown() {
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    // Обновляем элементы
-    document.getElementById('days').textContent = days;
-    document.getElementById('hours').textContent = hours;
-    document.getElementById('minutes').textContent = minutes;
-    document.getElementById('seconds').textContent = seconds;
-
     // Если время вышло
     if (timeLeft < 0) {
         clearInterval(countdownInterval);
         document.getElementById('countdown').innerHTML = '<p>Свадьба состоялась!</p>';
+    }
+
+    updateWithAnimation('days', days);
+    updateWithAnimation('hours', hours);
+    updateWithAnimation('minutes', minutes);
+    updateWithAnimation('seconds', seconds);
+}
+
+function updateWithAnimation(elementId, newValue) {
+    const element = document.getElementById(elementId);
+    const oldValue = element.textContent;
+
+    if (oldValue !== newValue.toString()) {
+        element.textContent = newValue;
+        element.classList.add('update');
+        setTimeout(() => element.classList.remove('update'), 500);
     }
 }
 
