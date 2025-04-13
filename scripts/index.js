@@ -153,3 +153,38 @@ window.addEventListener('scroll', function() {
         ticking = true;
     }
 });
+
+const audio = document.getElementById('background-music');
+const muteButton = document.getElementById('mute-button');
+const soundOnIcon = muteButton.querySelector('.sound-on');
+const soundOffIcon = muteButton.querySelector('.sound-off');
+let isPlaying = false;
+
+function toggleMusic() {
+    if (isPlaying) {
+        audio.pause();
+        soundOnIcon.style.display = 'none';
+        soundOffIcon.style.display = 'block';
+    } else {
+        audio.play().then(() => {
+            soundOnIcon.style.display = 'block';
+            soundOffIcon.style.display = 'none';
+        }).catch(error => {
+            console.log('Ошибка воспроизведения:', error);
+        });
+    }
+    isPlaying = !isPlaying;
+}
+
+// Попытка автопроигрывания при загрузке
+window.addEventListener('load', () => {
+    audio.play().then(() => {
+        isPlaying = true;
+        soundOnIcon.style.display = 'block';
+        soundOffIcon.style.display = 'none';
+    }).catch(error => {
+        console.log('Заблокировано:(', error);
+        soundOnIcon.style.display = 'none';
+        soundOffIcon.style.display = 'block';
+    });
+});

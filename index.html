@@ -10,189 +10,194 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
-    <link rel="preload" href="styles/img/wedding-bg.jpg" as="image">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Great+Vibes&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Parisienne&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Raleway:wght@300;400;500;600;700&subset=latin,cyrillic"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="styles/img/black.jpg" as="image">
 </head>
 <body>
 
-<!-- Главная секция с таймером -->
+<!-- Главная секция -->
 <section id="home" class="hero">
     <div class="hero-parallax">
-        <img src="styles/img/wedding-bg.jpg" alt="Свадебный фон" class="hero-bg">
+        <img src="styles/img/black.jpg" alt="Свадебный фон" class="hero-bg">
     </div>
     <div class="hero-content">
-        <h1 class="animate-scale">Wedding day</h1>
+        <h1 class="animate-scale">WEDDING DAY</h1>
         <div class="names animate-fade">
-            <span>Рустам & Аделина</span>
+            <span>РУСТАМ & АДЕЛИНА</span>
+        </div>
+        <audio id="background-music" loop>
+            <source src="https://dl.dropboxusercontent.com/scl/fi/sxjng3rsxkfhee6zrv50q/music_ph_33.mp3?rlkey=7s2niylzk9x6qd2wu6nur8yhy&dl=0"
+                    type="audio/mpeg">
+            Ваш браузер не поддерживает воспроизведение аудио.
+        </audio>
+        <div class="audio-controls">
+            <div class="audio-hint">
+                <span class="hint-text">Для атмосферы</span>
+                <svg class="hint-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </div>
+            <button id="mute-button" onclick="toggleMusic()">
+                <svg class="sound-icon sound-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+                <svg class="sound-icon sound-off" style="display: none;" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+            </button>
         </div>
     </div>
 </section>
 
-<div class="section-divider"></div>
+<section class="invitation">
+    <h2><span id="guest-appeal">Дорогие гости!</span></h2>
+    <p>В нашей жизни произойдет очень важное событие – наша свадьба!</p>
 
-<div class="content-wrapper">
-    <section class="invitation">
-        <h2><span id="guest-appeal">Дорогие гости!</span></h2>
-        <p>В нашей жизни произойдет очень важное событие – наша свадьба!
-            Позвольте пригласить Вас разделить с нами радость этого дня.
-            Подарите свою поддержку и добрые пожелания, а мы в свою очередь поделимся частичкой нашего счастья.</p>
+    <h2><span id="date">05.07.2025</span></h2>
 
-        <div class="calendar-container animate-scale">
-            <div class="calendar-header">Июль 2025</div>
-            <div class="calendar-days">
-                <div class="day-header">Пн</div>
-                <div class="day-header">Вт</div>
-                <div class="day-header">Ср</div>
-                <div class="day-header">Чт</div>
-                <div class="day-header">Пт</div>
-                <div class="day-header">Сб</div>
-                <div class="day-header">Вс</div>
+    <p>Позвольте пригласить Вас разделить с нами радость этого дня</p>
+</section>
 
-                <!-- Пустые ячейки до начала месяца -->
-                <div class="calendar-day empty"></div>
+<section class="venue-section">
+    <div class="venue-info">
+        <span class="pearl pearl-1"></span>
+        <span class="pearl pearl-2"></span>
+        <span class="pearl pearl-3"></span>
+        <span class="pearl pearl-4"></span>
+        <span class="pearl pearl-5"></span>
+        <h2>LOCATION</h2>
+        <p>White Place<br>г. Казань, ул. Халикова, 26</p>
+        <a href="https://yandex.com/maps/-/CHbIaYlm" target="_blank" class="route-button">ПОСТРОИТЬ МАРШРУТ</a>
+    </div>
+</section>
 
-                <!-- Дни месяца -->
-                <div class="calendar-day">1</div>
-                <div class="calendar-day">2</div>
-                <div class="calendar-day">3</div>
-                <div class="calendar-day">4</div>
-                <div class="calendar-day wedding-day">5</div>
-                <div class="calendar-day">6</div>
-                <div class="calendar-day">7</div>
-                <div class="calendar-day">8</div>
-                <div class="calendar-day">9</div>
-                <div class="calendar-day">10</div>
-                <div class="calendar-day">11</div>
-                <div class="calendar-day">12</div>
-                <div class="calendar-day">13</div>
-                <div class="calendar-day">14</div>
-                <div class="calendar-day">15</div>
-                <div class="calendar-day">16</div>
-                <div class="calendar-day">17</div>
-                <div class="calendar-day">18</div>
-                <div class="calendar-day">19</div>
-                <div class="calendar-day">20</div>
-                <div class="calendar-day">21</div>
-                <div class="calendar-day">22</div>
-                <div class="calendar-day">23</div>
-                <div class="calendar-day">24</div>
-                <div class="calendar-day">25</div>
-                <div class="calendar-day">26</div>
-                <div class="calendar-day">27</div>
-                <div class="calendar-day">28</div>
-                <div class="calendar-day">29</div>
-                <div class="calendar-day">30</div>
-                <div class="calendar-day">31</div>
-            </div>
+
+<!--        <div class="map-container">-->
+<!--            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6739e2dfa23f94b3e8ba44f43a13b8acdfd0cc71c393922f72ec62333fb36c01&width=100%25&height=300&lang=ru_RU&scroll=true"></script>-->
+<!--        </div>-->
+<!--        <div class="time-info">-->
+<!--            <h3>Время</h3>-->
+<!--            <p>Начало церемонии: <strong>16:00</strong><br>Сбор гостей: <strong>15:30</strong></p>-->
+<!--        </div>-->
+
+<section class="dress-code-section">
+    <div class="dress-code-info animate-slide-up">
+        <h2>DRESS CODE</h2>
+        <p>Будем рады, если вы поддержите нашу цветовую палитру:<br>оттенки бежевого, черного или их сочетания.</p>
+
+        <div class="color-palette">
+            <div class="color-circle" style="background-color: #F5F5DC;"></div>
+            <div class="color-circle" style="background-color: #D4A373;"></div>
+            <div class="color-circle" style="background-color: #000000;"></div>
         </div>
 
-        <div class="countdown-heading animate-slide-up">
-            <h3>До нашей свадьбы осталось:</h3>
-        </div>
-
-        <!-- Таймер обратного отсчета -->
-        <div id="countdown" class="countdown animate-fade">
-            <div><span id="days">0</span><span>дней</span></div>
-            <div><span id="hours">0</span><span>часов</span></div>
-            <div><span id="minutes">0</span><span>минут</span></div>
-            <div><span id="seconds">0</span><span>секунд</span></div>
-        </div>
-    </section>
-
-    <section class="venue-section">
-        <div class="venue-info animate-slide-up">
-            <h2>Место проведения</h2>
-            <p>White Place<br>г. Казань, ул. Халикова, 26</p>
-            <div class="map-container">
-                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6739e2dfa23f94b3e8ba44f43a13b8acdfd0cc71c393922f72ec62333fb36c01&width=100%25&height=300&lang=ru_RU&scroll=true"></script>
-            </div>
-            <div class="time-info">
-                <h3>Время</h3>
-                <p>Начало церемонии: <strong>16:00</strong><br>Сбор гостей: <strong>15:30</strong></p>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="dress-code-section">
-        <div class="dress-code-info animate-slide-up">
-            <h2>Дресс-код</h2>
-            <p>Будем рады, если вы поддержите нашу цветовую палитру:<br>оттенки бежевого, черного или их сочетания.</p>
-
-            <div class="color-palette">
-                <div class="color-circle" style="background-color: #F5F5DC;"></div>
-                <div class="color-circle" style="background-color: #D4A373;"></div>
-                <div class="color-circle" style="background-color: #000000;"></div>
-            </div>
-
-            <div class="dress-examples">
-                <div class="example">
-                    <h3>Для женщин</h3>
-                    <img src="img/women-dress-code.jpg" alt="Примеры для женщин" class="animate-scale">
-                    <p>Элегантные платья, костюмы или комбинации в нашей цветовой гамме</p>
+        <div class="dress-examples">
+            <div class="example">
+                <h3>Девушки</h3>
+                <div class="gallery">
+                    <img src="styles/img/women-dress-1.jpeg" alt="Пример платья для женщин 1" class="animate-scale">
+                    <img src="styles/img/women-dress-2.jpeg" alt="Пример платья для женщин 2" class="animate-scale">
+                    <img src="styles/img/women-dress-3.jpeg" alt="Пример платья для женщин 3" class="animate-scale">
+                    <img src="styles/img/women-dress-4.jpeg" alt="Пример платья для женщин 3" class="animate-scale">
+                    <img src="styles/img/women-dress-5.jpeg" alt="Пример платья для женщин 3" class="animate-scale">
+                    <img src="styles/img/women-dress-6.jpeg" alt="Пример платья для женщин 3" class="animate-scale">
                 </div>
-                <div class="example">
-                    <h3>Для мужчин</h3>
-                    <img src="img/men-dress-code.jpg" alt="Примеры для мужчин" class="animate-scale">
-                    <p>Костюмы, брюки и рубашки в нашей цветовой гамме</p>
+                <p>Элегантные платья, костюмы или комбинации в нашей цветовой гамме</p>
+            </div>
+            <div class="example">
+                <h3>Мужчины</h3>
+                <div class="gallery">
+                    <img src="styles/img/men-dress-1.jpeg" alt="Пример костюма для мужчин 1" class="animate-scale">
+                    <img src="styles/img/men-dress-2.jpeg" alt="Пример костюма для мужчин 2" class="animate-scale">
+                    <img src="styles/img/men-dress-3.jpeg" alt="Пример костюма для мужчин 3" class="animate-scale">
+                    <img src="styles/img/men-dress-4.jpeg" alt="Пример костюма для мужчин 3" class="animate-scale">
+                    <img src="styles/img/men-dress-5.jpeg" alt="Пример костюма для мужчин 3" class="animate-scale">
                 </div>
+                <p>Костюмы, брюки и рубашки в нашей цветовой гамме</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="form-section">
-        <h2 class="animate-slide-up">Подтвердите ваше присутствие</h2>
-        <p class="animate-slide-up">Пожалуйста, заполните форму, чтобы мы могли лучше подготовиться.</p>
+<section class="form-section">
+    <h2 class="animate-slide-up">Подтвердите ваше присутствие</h2>
+    <p class="animate-slide-up">Пожалуйста, заполните форму, чтобы мы могли лучше подготовиться.</p>
 
-        <form id="wedding-form" target="hidden-iframe" class="animate-slide-up">
-            <div class="form-field">
-                <label for="name">Ваше имя и фамилия*</label>
-                <input type="text" id="name" name="entry.1501194167" required>
-            </div>
-
-            <div class="form-field">
-                <label>Сможете ли вы присутствовать?*</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="entry.186441998" value="Приду" required> Приду</label>
-                    <label><input type="radio" name="entry.186441998" value="Не смогу прийти"> Не смогу прийти</label>
-                </div>
-            </div>
-
-            <div class="form-field">
-                <label>Предпочтения по напиткам*</label>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" name="entry.458437242" value="Белое вино"> Белое вино</label>
-                    <label><input type="checkbox" name="entry.458437242" value="Красное вино"> Красное вино</label>
-                    <label><input type="checkbox" name="entry.458437242" value="Джин"> Джин</label>
-                    <label><input type="checkbox" name="entry.458437242" value="Виски"> Виски</label>
-                    <label><input type="checkbox" name="entry.458437242" value="Безалкогольные напитки"> Безалкогольные напитки</label>
-                </div>
-            </div>
-
-            <button type="submit" class="animate-scale">Отправить</button>
-        </form>
-
-        <div id="form-message" class="form-message"></div>
-        <iframe name="hidden-iframe" style="display: none;"></iframe>
-    </section>
-
-    <!-- Секция с соцсетями -->
-    <section class="social">
-        <h2 class="animate-fade">Контакты</h2>
-        <div class="social-links animate-scale">
-            <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
+    <form id="wedding-form" target="hidden-iframe" class="animate-slide-up">
+        <div class="form-field">
+            <label for="name">Ваше имя и фамилия*</label>
+            <input type="text" id="name" name="entry.1501194167" required>
         </div>
-    </section>
 
-    <!-- Футер -->
-    <footer class="footer">
-        <p class="animate-fade">С любовью, Рустам и Аделина</p>
-        <p class="animate-fade">© 2025 Наша свадьба</p>
-    </footer>
+        <div class="form-field">
+            <label>Сможете ли вы присутствовать?*</label>
+            <div class="radio-group">
+                <label><input type="radio" name="entry.186441998" value="Приду" required> Приду</label>
+                <label><input type="radio" name="entry.186441998" value="Не смогу прийти"> Не смогу прийти</label>
+            </div>
+        </div>
 
+        <div class="form-field">
+            <label>Предпочтения по напиткам*</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="entry.458437242" value="Белое вино"> Белое вино</label>
+                <label><input type="checkbox" name="entry.458437242" value="Красное вино"> Красное вино</label>
+                <label><input type="checkbox" name="entry.458437242" value="Джин"> Джин</label>
+                <label><input type="checkbox" name="entry.458437242" value="Виски"> Виски</label>
+                <label><input type="checkbox" name="entry.458437242" value="Безалкогольные напитки"> Безалкогольные
+                    напитки</label>
+            </div>
+        </div>
+
+        <button type="submit" class="animate-scale">Отправить</button>
+    </form>
+
+    <div id="form-message" class="form-message"></div>
+    <iframe name="hidden-iframe" style="display: none;"></iframe>
+</section>
+
+<!-- Секция с соцсетями -->
+<section class="social">
+    <h2 class="animate-fade">Контакты</h2>
+    <div class="social-links animate-scale">
+        <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+</section>
+
+<div class="countdown-heading animate-slide-up">
+    <h3>До нашей свадьбы осталось:</h3>
 </div>
+
+<!-- Таймер обратного отсчета -->
+<div id="countdown" class="countdown animate-fade">
+    <div><span id="days">0</span><span>дней</span></div>
+    <div><span id="hours">0</span><span>часов</span></div>
+    <div><span id="minutes">0</span><span>минут</span></div>
+    <div><span id="seconds">0</span><span>секунд</span></div>
+</div>
+
+<!-- Футер -->
+<footer class="footer">
+    <p class="animate-fade">С любовью, Рустам и Аделина</p>
+    <p class="animate-fade">© 2025 Наша свадьба</p>
+</footer>
 
 <!-- Подключаем JavaScript -->
 <script src="scripts/index.js"></script>
