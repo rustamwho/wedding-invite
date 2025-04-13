@@ -538,7 +538,8 @@ nav a:hover {
     min-width: 300px;
     max-width: 400px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.8); /* Слегка затемнённый фон для контраста с чёрным текстом */
+    /*background: rgba(0, 0, 0, 0.8); */
+    background-color: #1f1f1f;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -549,11 +550,12 @@ nav a:hover {
 }
 
 .example h3 {
-    color: #ffffff; /* Оставим тёмно-бежевый для заголовков, чтобы сохранить стиль */
+    color: #ffffff;
+    font-family: 'Extra light wedding', Arial, sans-serif;
 }
 
 .example p {
-    color: #ffffff; /* Чёрный цвет текста */
+    color: #ffffff;
 }
 
 /* Галерея */
@@ -585,7 +587,7 @@ nav a:hover {
 }
 
 form {
-    max-width: 400px;
+    max-width: 350px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -597,7 +599,8 @@ form {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    background: rgba(0, 0, 0, 0.7);
+    /*background: rgba(0, 0, 0, 0.7);*/
+    background-color: #1f1f1f;
     padding: 20px;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -626,30 +629,20 @@ form {
     display: flex;
     align-items: center;
     cursor: pointer;
-    color: #F5F5DC;
+    color: #ffffff;
     font-size: 1em;
     transition: color 0.3s ease;
-}
-
-.radio-group label:hover, .checkbox-group label:hover {
-    color: #D4A373;
 }
 
 .form-field input[type="text"] {
     padding: 12px;
     width: 100%;
-    border: 1px solid #D4A373;
+    border: 1px solid #f4f1ed;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.8);
     color: #000000;
     font-size: 1em;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.form-field input[type="text"]:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(212, 163, 115, 0.5);
-    border-color: #D4A373;
 }
 
 .form-field input[type="radio"],
@@ -661,8 +654,8 @@ form {
 button {
     padding: 15px 35px;
     font-size: 1.1em;
-    background: #D4A373;
-    color: #000000;
+    background-color: #1f1f1f;
+    color: #ffffff;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -676,7 +669,7 @@ button {
 button:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    background-color: #c2915e;
+    /*background-color: #c2915e;*/
 }
 
 .form-message {
@@ -777,7 +770,7 @@ button:hover {
     max-width: 150px;
     padding: 0.5em;
     text-align: center;
-    border-right: 1px solid white;
+    border-right: 1px solid #353535;
 }
 
 /* Убираем правую границу у последнего элемента */
@@ -807,7 +800,7 @@ button:hover {
 }
 
 footer {
-    background-color: black;
+    background-color: #1f1f1f;
     color: white;
     text-align: center;
     padding: 2vh 0;
@@ -821,7 +814,7 @@ footer {
 footer p {
     margin: 0.5em 0;
     font-weight: 300;
-    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    font-size: clamp(0.8rem, 3.5vw, 1.1rem);
     width: 100%;
     max-width: 90%;
 }
