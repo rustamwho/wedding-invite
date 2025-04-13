@@ -48,7 +48,7 @@ body {
     animation: waveEffect 15s infinite ease-in-out;
     transform-origin: center center;
 
-    filter: brightness(1.1) contrast(0.5) saturate(1.1);
+    filter: brightness(1) contrast(0.5) saturate(1.1);
 }
 
 @keyframes waveEffect {
@@ -255,7 +255,7 @@ nav a:hover {
     padding: 9rem 2rem;
     max-width: 360px;
     text-align: center;
-    color: #fff;
+    color: #bba88a;
     font-family: 'Extra light wedding', serif;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     animation: slideUp 1s ease-in-out;
@@ -266,7 +266,8 @@ nav a:hover {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: radial-gradient(circle, #fff 30%, #ddd 70%);
+    /*background: radial-gradient(circle, #fff 30%, #ddd 70%);*/
+    background: radial-gradient(circle, #bba88a 30%, #ddd 70%);
     border-radius: 50%;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
     z-index: 2;
@@ -339,16 +340,19 @@ nav a:hover {
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
-    color: #eee;
+    /*color: #eee;*/
+    color: #bba88a;
 }
 
 .route-button {
     display: inline-block;
     padding: 0.8rem 1.8rem;
     border-radius: 2rem;
-    border: 1px solid #fff;
+    /*border: 1px solid #fff;*/
+    border: 1px solid #bba88a;
     text-decoration: none;
-    color: #fff;
+    /*color: #fff;*/
+    color: #bba88a;
     font-family: 'Extra light wedding', sans-serif;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -552,12 +556,14 @@ nav a:hover {
 }
 
 .example h3 {
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #bba88a;
     font-family: 'Extra light wedding', Arial, sans-serif;
 }
 
 .example p {
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #bba88a;
 }
 
 /* Галерея */
@@ -616,7 +622,8 @@ form {
 .form-field label {
     font-size: 1.1em;
     margin-bottom: 10px;
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #bba88a;
 }
 
 .radio-group, .checkbox-group {
@@ -631,7 +638,8 @@ form {
     display: flex;
     align-items: center;
     cursor: pointer;
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #bba88a;
     font-size: 1em;
     transition: color 0.3s ease;
 }
@@ -639,9 +647,10 @@ form {
 .form-field input[type="text"] {
     padding: 12px;
     width: 100%;
-    border: 1px solid #f4f1ed;
+    border: 1px solid #bba88a;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.8);
+    /*background: rgba(221, 9, 9, 0.8);*/
+    background: #bba88a;;
     color: #000000;
     font-size: 1em;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
@@ -657,7 +666,8 @@ button {
     padding: 15px 35px;
     font-size: 1.1em;
     background-color: #1f1f1f;
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #bba88a;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -728,7 +738,8 @@ button:hover {
 .timer-section {
     position: relative;
     padding: 5vh 0 2vh;
-    color: white;
+    /*color: white;*/
+    color: #bba88a;
     text-align: center;
 }
 
@@ -803,7 +814,8 @@ button:hover {
 
 footer {
     background-color: #1f1f1f;
-    color: white;
+    /*color: white;*/
+    color: #bba88a;
     text-align: center;
     padding: 2vh 0;
     width: 100%;
