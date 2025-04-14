@@ -26,6 +26,7 @@ body {
     line-height: 1;
     font-weight: 200;
     letter-spacing: 0.07em;
+    align-items: center;
 
     /* Резервный цвет фона */
     background-color: #F5F5DC;
@@ -60,7 +61,11 @@ body {
 }
 
 section {
-    padding: 80px 20px;
+    padding: 60px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h2 {
@@ -93,97 +98,105 @@ nav a:hover {
     color: #D4A373;
 }
 
+/* Общий контейнер с ограниченной шириной */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Главная секция */
 .hero {
     height: 100vh;
-    overflow: hidden;
     position: relative;
-    will-change: transform;
-    isolation: isolate; /* Изолируем контекст наложения */
-    z-index: 1; /* Базовый z-index */
-    width: 100%; /* Явно указываем полную ширину */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .hero-parallax {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 110%;
-    height: 110%; /* Больше контейнера для эффекта */
+    top: 70px;
+    left: 50px; /* Добавляем отступ слева */
+    right: 50px; /* Добавляем отступ справа */
+    width: calc(100% - 100px); /* Уменьшаем ширину с учетом отступов */
+    height: 45vh;
     z-index: -1;
-    will-change: transform;
+    overflow: hidden;
+    border-radius: 20px;
 }
 
 .hero-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block; /* Предотвращает лишние пиксели снизу */
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Полупрозрачный слой */
+    display: block;
 }
 
 .hero-content {
+    width: 100%;
     position: relative;
     z-index: 1;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: center;
-    color: #fbfbfb;
     text-align: center;
+    padding: 50vh 20px 80px; /* Верхний отступ 50vh, нижний 80px для безопасной зоны */
+    box-sizing: border-box;
+    justify-content: space-between; /* Равномерное распределение содержимого */
 }
 
-/* Контейнер для заголовка и имен (вверху) */
+/* Контейнер для заголовка и имен */
 .hero-header {
-    position: absolute;
-    bottom: 50vh; /* Прижимаем к верхнему краю с небольшим отступом */
+    width: 100%;
     text-align: center;
+    margin-bottom: clamp(20px, 3vh, 40px); /* Адаптивный отступ */
 }
 
 .hero h1 {
     font-family: 'Extra light wedding', Arial, sans-serif;
-    font-size: clamp(2rem, 5vw, 8rem);
+    font-size: clamp(10px, 5vw, 20px);
     font-weight: 400;
-    margin-bottom: 1vh;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: clamp(8px, 1vh, 16px);
+    color: #000000;
 }
 
 /* Стили для имен */
 .names {
+    width: 100%;
     font-family: 'Extra light wedding', Arial, sans-serif;
-    font-size: clamp(3.5rem, 8vw, 10rem);
+    font-size: clamp(15px, 8vw, 33px);
     font-weight: 400;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #000000;
 }
 
 /* Дата свадьбы */
 .wedding-date {
-    margin-top: auto; /* Располагаем дату в центре по вертикали */
-    margin-bottom: 20vh; /* Отступ снизу, чтобы не перекрывать аудиоконтроллер */
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: clamp(10px, 2vh, 800px);
 }
 
 .wedding-date span {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 4rem);
-    color: #ffffff;
+    font-size: clamp(10px, 7vw, 28px);
+    color: #000000;
     letter-spacing: 0.1em;
 }
+
 
 /* Стили для аудио-контроллера */
 .audio-controls {
     position: absolute;
-    bottom: clamp(10vh, 11vh, 16vh);
-    right: clamp(3vw, 5vw, 7vw);
+    bottom: clamp(0vh, 0.5vh, 1vh);
+    right: clamp(1vh, 0.5vh, 0vh);
     z-index: 2;
     display: flex;
     align-items: center;
@@ -198,8 +211,8 @@ nav a:hover {
 
 .hint-text {
     font-family: Arial, sans-serif;
-    font-size: clamp(0.8rem, 1.5vw, 1.3rem); /* Размер текста от 0.8rem до 1.3rem */
-    color: #F5F5DC;
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem); /* Размер текста от 0.8rem до 1.3rem */
+    color: rgb(225, 220, 200);
     opacity: 0.5;
 }
 
@@ -210,6 +223,123 @@ nav a:hover {
     opacity: 0.7;
     animation: arrow-move 1.5s ease-in-out infinite;
 }
+
+/*.hero {*/
+/*    height: 100vh;*/
+/*    overflow: hidden;*/
+/*    position: relative;*/
+/*    will-change: transform;*/
+/*    isolation: isolate; !* Изолируем контекст наложения *!*/
+/*    z-index: 1; !* Базовый z-index *!*/
+/*    width: 100%; !* Явно указываем полную ширину *!*/
+/*}*/
+
+/*.hero-parallax {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 110%;*/
+/*    height: 110%; !* Больше контейнера для эффекта *!*/
+/*    z-index: -1;*/
+/*    will-change: transform;*/
+/*}*/
+
+/*.hero-bg {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    object-fit: cover;*/
+/*    display: block; !* Предотвращает лишние пиксели снизу *!*/
+/*}*/
+
+/*.hero::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: rgba(0, 0, 0, 0.3); !* Полупрозрачный слой *!*/
+/*}*/
+
+/*.hero-content {*/
+/*    position: relative;*/
+/*    z-index: 1;*/
+/*    height: 100vh;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: flex-end;*/
+/*    align-items: center;*/
+/*    color: #fbfbfb;*/
+/*    text-align: center;*/
+/*}*/
+
+/*!* Контейнер для заголовка и имен (вверху) *!*/
+/*.hero-header {*/
+/*    position: absolute;*/
+/*    bottom: 50vh; !* Прижимаем к верхнему краю с небольшим отступом *!*/
+/*    text-align: center;*/
+/*}*/
+
+/*.hero h1 {*/
+/*    font-family: 'Extra light wedding', Arial, sans-serif;*/
+/*    font-size: clamp(2rem, 5vw, 8rem);*/
+/*    font-weight: 400;*/
+/*    margin-bottom: 1vh;*/
+/*    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
+/*}*/
+
+/*!* Стили для имен *!*/
+/*.names {*/
+/*    font-family: 'Extra light wedding', Arial, sans-serif;*/
+/*    font-size: clamp(3.5rem, 8vw, 10rem);*/
+/*    font-weight: 400;*/
+/*    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
+/*}*/
+
+/*!* Дата свадьбы *!*/
+/*.wedding-date {*/
+/*    margin-top: auto; !* Располагаем дату в центре по вертикали *!*/
+/*    margin-bottom: 20vh; !* Отступ снизу, чтобы не перекрывать аудиоконтроллер *!*/
+/*}*/
+
+/*.wedding-date span {*/
+/*    font-family: 'Playfair Display', serif;*/
+/*    font-size: clamp(2rem, 4vw, 4rem);*/
+/*    color: #ffffff;*/
+/*    letter-spacing: 0.1em;*/
+/*}*/
+
+/*!* Стили для аудио-контроллера *!*/
+/*.audio-controls {*/
+/*    position: absolute;*/
+/*    bottom: clamp(10vh, 11vh, 16vh);*/
+/*    right: clamp(3vw, 5vw, 7vw);*/
+/*    z-index: 2;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: clamp(0.5rem, 1vw, 1rem); !* Расстояние между надписью и кнопкой *!*/
+/*}*/
+
+/*.audio-hint {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: clamp(0.3rem, 0.5vw, 0.5rem); !* Расстояние между текстом и стрелкой *!*/
+/*}*/
+
+/*.hint-text {*/
+/*    font-family: Arial, sans-serif;*/
+/*    font-size: clamp(0.8rem, 1.5vw, 1.3rem); !* Размер текста от 0.8rem до 1.3rem *!*/
+/*    color: #F5F5DC;*/
+/*    opacity: 0.5;*/
+/*}*/
+
+/*.hint-arrow {*/
+/*    width: clamp(14px, 2vw, 24px);*/
+/*    height: clamp(14px, 2vw, 24px);*/
+/*    stroke: #F5F5DC;*/
+/*    opacity: 0.7;*/
+/*    animation: arrow-move 1.5s ease-in-out infinite;*/
+/*}*/
 
 /* Анимация для стрелочки */
 @keyframes arrow-move {
@@ -229,11 +359,19 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0; /* Предотвращает сжатие кнопки */
 }
 
+/*.sound-icon {*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*    stroke: #F5F5DC;*/
+/*    transition: stroke 0.3s ease;*/
+/*}*/
+
 .sound-icon {
-    width: 24px;
-    height: 24px;
+    width: clamp(14px, 4vw, 18px); /* Уменьшенный размер */
+    height: clamp(14px, 4vw, 18px);
     stroke: #F5F5DC;
     transition: stroke 0.3s ease;
 }
@@ -990,121 +1128,4 @@ footer p:nth-child(1) {
 
 footer p:nth-child(2) {
     animation-delay: 0.4s;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    section {
-        padding: 60px 15px;
-    }
-
-    h2 {
-        font-size: 2em;
-    }
-
-    h3 {
-        font-size: 1.5em;
-    }
-
-    p {
-        font-size: 1.1em;
-    }
-
-    .hero-content h1 {
-        font-size: clamp(1rem, 5vw, 4rem);
-    }
-
-    .names {
-        font-size: clamp(1rem, 7vw, 5rem);
-    }
-
-    .countdown div {
-        min-width: 60px;
-        padding: 10px;
-    }
-
-    .countdown span:first-child {
-        font-size: 1.5em;
-    }
-
-    .dress-examples {
-        gap: 20px;
-    }
-
-    .example {
-        min-width: 250px;
-        padding: 15px;
-    }
-
-    .form-field {
-        padding: 15px;
-    }
-
-    button {
-        padding: 12px 25px;
-    }
-
-    .social-links a {
-        font-size: 2em;
-    }
-
-    .timer-container {
-        gap: 3vw;
-    }
-}
-
-@media (max-width: 480px) {
-    section {
-        padding: 40px 10px;
-    }
-
-    .countdown {
-        gap: 10px;
-    }
-
-    .countdown div {
-        min-width: 50px;
-        padding: 8px;
-    }
-
-    .countdown span:first-child {
-        font-size: 1.2em;
-    }
-
-    .countdown span:last-child {
-        font-size: 0.8em;
-    }
-
-    .example {
-        min-width: 220px;
-    }
-
-    .radio-group, .checkbox-group {
-        gap: 8px;
-    }
-
-    .form-field label {
-        font-size: 1em;
-    }
-
-    .social-links {
-        gap: 20px;
-    }
-}
-
-/* Медиа-запрос для очень маленьких экранов (если всё же нужно уточнение) */
-@media (max-height: 400px) {
-    .audio-controls {
-        bottom: 1vh; /* Минимальный отступ для очень низких экранов */
-        right: 1vw;
-    }
-
-    .hint-text {
-        font-size: 0.7rem; /* Минимальный размер текста */
-    }
-
-    .hint-arrow {
-        width: 12px;
-        height: 12px;
-    }
 }
