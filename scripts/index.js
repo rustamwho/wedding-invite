@@ -254,6 +254,30 @@ document.addEventListener('DOMContentLoaded', function() {
         icon.style.width = width + 'px';
         icon.style.height = height + 'px';
     });
+
+    const loadingScreen = document.getElementById('loading-screen');
+    const otherSections = document.querySelectorAll('section:not(.hero)');
+
+    setTimeout(function() {
+        // Скрываем загрузочный экран
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.visibility = 'hidden';
+        }
+
+        // Плавно показываем hero секцию
+        if (hero) {
+            hero.style.opacity = '1';
+        }
+
+        // Плавно показываем остальные секции с задержкой
+        otherSections.forEach((section, index) => {
+            setTimeout(() => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }, 200 * index);
+        });
+    }, 1000); // Увеличил задержку для лучшего эффекта
 });
 
 const audio = document.getElementById('background-music');
