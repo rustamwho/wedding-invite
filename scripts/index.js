@@ -143,26 +143,26 @@ let lastScrollPosition = 0;
 let ticking = false;
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-// Функция обновления параллакса
-function updateParallax() {
-    const parallaxElement = document.querySelector('.hero-parallax');
-
-    if (parallaxElement) {
-        const parallaxSpeed = isTouchDevice ? 0.15 : 0.4;
-        parallaxElement.style.transform = `translateY(${lastScrollPosition * parallaxSpeed}px)`;
-    }
-    ticking = false;
-}
-
-// Обработчик прокрутки с оптимизацией
-window.addEventListener('scroll', function() {
-    lastScrollPosition = window.scrollY;
-
-    if (!ticking) {
-        window.requestAnimationFrame(updateParallax);
-        ticking = true;
-    }
-});
+// // Функция обновления параллакса
+// function updateParallax() {
+//     const parallaxElement = document.querySelector('.hero-parallax');
+//
+//     if (parallaxElement) {
+//         const parallaxSpeed = isTouchDevice ? 0.15 : 0.4;
+//         parallaxElement.style.transform = `translateY(${lastScrollPosition * parallaxSpeed}px)`;
+//     }
+//     ticking = false;
+// }
+//
+// // Обработчик прокрутки с оптимизацией
+// window.addEventListener('scroll', function() {
+//     lastScrollPosition = window.scrollY;
+//
+//     if (!ticking) {
+//         window.requestAnimationFrame(updateParallax);
+//         ticking = true;
+//     }
+// });
 
 const audio = document.getElementById('background-music');
 const muteButton = document.getElementById('mute-button');
