@@ -29,7 +29,7 @@ body {
     align-items: center;
 
     /* Резервный цвет фона */
-    background-color: #F5F5DC;
+    background-color: #ac987f;
 }
 
 /* Фоновое изображение для всей страницы */
@@ -41,15 +41,16 @@ body {
     height: 120%;
     z-index: -1; /* позади всего */
 
-    background-image: url('img/background.webp');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    /*background-color: #F5F5DC;*/
+    /*background-image: url('img/background.webp');*/
+    /*background-position: center center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    /**/
+    /*animation: waveEffect 15s infinite ease-in-out;*/
+    /*transform-origin: center center;*/
 
-    animation: waveEffect 15s infinite ease-in-out;
-    transform-origin: center center;
-
-    filter: brightness(1) contrast(0.5) saturate(1.1);
+    /*filter: brightness(1) contrast(0.5) saturate(1.1);*/
 }
 
 @keyframes waveEffect {
@@ -104,7 +105,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #F5F5DC;
+    background-color: #ac987f;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -186,7 +187,7 @@ section:not(.hero) {
 
 .hero-parallax {
     position: absolute;
-    top: 70px;
+    top: 20px;
     left: 20px; /* Добавляем отступ слева */
     right: 20px; /* Добавляем отступ справа */
     width: calc(100% - 40px); /* Уменьшаем ширину с учетом отступов */
@@ -214,7 +215,7 @@ section:not(.hero) {
     text-align: center;
     /*padding: 50vh 20px 80px; !* Верхний отступ 50vh, нижний 80px для безопасной зоны *!*/
     box-sizing: border-box;
-    justify-content: space-between; /* Равномерное распределение содержимого */
+    justify-content: flex-start; /* Равномерное распределение содержимого */
 }
 
 /* Контейнер для заголовка и имен */
@@ -245,8 +246,8 @@ section:not(.hero) {
 .wedding-date {
     width: 100%;
     text-align: center;
-    margin-top: auto;
-    margin-bottom: clamp(10px, 2vh, 80px);
+    /*margin-top: auto;*/
+    /*margin-bottom: clamp(10px, 2vh, 80px);*/
 }
 
 .wedding-date span {
@@ -259,12 +260,15 @@ section:not(.hero) {
 
 /* Стили для аудио-контроллера */
 .audio-controls {
-    position: absolute;
-    /*bottom: clamp(0vh, 1vh, 1vh);*/
-    /*right: clamp(1vh, 0.5vh, 0vh);*/
+    position: relative;
+    margin-right: 15px; /* Отступ справа */
+    margin-bottom: 15px; /* Отступ снизу */
+    max-width: 180px;
     z-index: 2;
     display: flex;
     align-items: center;
+    align-self: flex-end; /* Выравнивает по правому краю */
+    /*margin-top: auto; !* Отодвигает в конец flex-контейнера *!*/
     gap: clamp(0.5rem, 1vw, 1rem); /* Расстояние между надписью и кнопкой */
 }
 

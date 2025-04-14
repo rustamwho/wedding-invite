@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroContent = document.querySelector('.hero-content');
     const heroHeader = document.querySelector('.hero-header');
     const weddingDate = document.querySelector('.wedding-date');
-    const audioControls = document.querySelector('.audio-controls');
+    // const audioControls = document.querySelector('.audio-controls');
 
     // Фиксируем высоту картинки
     if (hero) {
@@ -186,21 +186,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Фиксируем высоту картинки
     if (heroParallax) {
-        const pixelHeight = vhToPx(45); // 45vh
+        const pixelHeight = vhToPx(55); // 45vh
         heroParallax.style.height = pixelHeight + 'px';
     }
 
     // Фиксируем отступы для контента
     if (heroContent) {
-        const paddingTop = vhToPx(50); // 50vh
-        const paddingBottom = 80; // 80px уже в px, не нужно конвертировать
+        const paddingTop = vhToPx(55); // 50vh
+        const paddingBottom = 40; // 80px уже в px, не нужно конвертировать
         heroContent.style.paddingTop = paddingTop + 'px';
         heroContent.style.paddingBottom = paddingBottom + 'px';
     }
 
     // Фиксируем отступ для заголовка
     if (heroHeader) {
-        const marginBottom = Math.min(Math.max(vhToPx(3), 20), 40); // clamp(20px, 3vh, 40px)
+        const marginBottom = Math.min(Math.max(vhToPx(5), 10), 100); // clamp(20px, 3vh, 40px)
         heroHeader.style.marginBottom = marginBottom + 'px';
     }
 
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentGap = dateRect.top - namesRect.bottom;
 
         // Устанавливаем минимальное расстояние (не менее 30px)
-        const minGap = Math.max(currentGap, 30);
+        const minGap = Math.max(currentGap, 1);
 
         // Устанавливаем margin-top для даты, чтобы сохранить это расстояние
         weddingDate.style.marginTop = minGap + 'px';
@@ -228,12 +228,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Фиксируем положение аудиоконтрола
-    if (audioControls) {
-        const bottom = 1; // 15px
-        const right = 1; // 15px
-        audioControls.style.bottom = bottom + 'px';
-        audioControls.style.right = right + 'px';
-    }
+    // if (audioControls) {
+    //     const bottom = 10; // 15px
+    //     const right = 20; // 15px
+    //     audioControls.style.bottom = bottom + 'px';
+    //     audioControls.style.marginRight = right + 'px';
+    // }
 
     // Дополнительно фиксируем размеры шрифтов
     const elementsWithRelativeFont = document.querySelectorAll('.hero h1, .names, .wedding-date span, .hint-text');
