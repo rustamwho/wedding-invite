@@ -122,13 +122,13 @@ nav a:hover {
 .hero-parallax {
     position: absolute;
     top: 70px;
-    left: 50px; /* Добавляем отступ слева */
-    right: 50px; /* Добавляем отступ справа */
-    width: calc(100% - 100px); /* Уменьшаем ширину с учетом отступов */
+    left: 20px; /* Добавляем отступ слева */
+    right: 20px; /* Добавляем отступ справа */
+    width: calc(100% - 40px); /* Уменьшаем ширину с учетом отступов */
     height: 45vh;
     z-index: -1;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .hero-bg {
