@@ -109,7 +109,7 @@ nav a:hover {
 
 /* Главная секция */
 .hero {
-    height: 100vh;
+    /*height: 100vh;*/
     position: relative;
     width: 100%;
     display: flex;
@@ -147,7 +147,7 @@ nav a:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 50vh 20px 80px; /* Верхний отступ 50vh, нижний 80px для безопасной зоны */
+    /*padding: 50vh 20px 80px; !* Верхний отступ 50vh, нижний 80px для безопасной зоны *!*/
     box-sizing: border-box;
     justify-content: space-between; /* Равномерное распределение содержимого */
 }
@@ -156,7 +156,7 @@ nav a:hover {
 .hero-header {
     width: 100%;
     text-align: center;
-    margin-bottom: clamp(20px, 3vh, 40px); /* Адаптивный отступ */
+    /*margin-bottom: clamp(20px, 3vh, 40px); !* Адаптивный отступ *!*/
 }
 
 .hero h1 {
@@ -181,7 +181,7 @@ nav a:hover {
     width: 100%;
     text-align: center;
     margin-top: auto;
-    margin-bottom: clamp(10px, 2vh, 800px);
+    margin-bottom: clamp(10px, 2vh, 80px);
 }
 
 .wedding-date span {
@@ -195,8 +195,8 @@ nav a:hover {
 /* Стили для аудио-контроллера */
 .audio-controls {
     position: absolute;
-    bottom: clamp(0vh, 0.5vh, 1vh);
-    right: clamp(1vh, 0.5vh, 0vh);
+    /*bottom: clamp(0vh, 1vh, 1vh);*/
+    /*right: clamp(1vh, 0.5vh, 0vh);*/
     z-index: 2;
     display: flex;
     align-items: center;

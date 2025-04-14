@@ -165,16 +165,95 @@ const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 // });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Находим элемент с картинкой
+    // Функция для преобразования vh в пиксели
+    function vhToPx(vh) {
+        return (window.innerHeight * vh) / 100;
+    }
+
+    // Получаем все необходимые элементы
+    const hero = document.querySelector('.hero');
     const heroParallax = document.querySelector('.hero-parallax');
+    const heroContent = document.querySelector('.hero-content');
+    const heroHeader = document.querySelector('.hero-header');
+    const weddingDate = document.querySelector('.wedding-date');
+    const audioControls = document.querySelector('.audio-controls');
 
+    // Фиксируем высоту картинки
+    if (hero) {
+        const pixelHeight = vhToPx(100); // 100vh
+        hero.style.height = pixelHeight + 'px';
+    }
+
+    // Фиксируем высоту картинки
     if (heroParallax) {
-        // Вычисляем текущую высоту (45vh в пикселях)
-        const pixelHeight = window.innerHeight * 0.45;
-
-        // Устанавливаем фиксированную высоту в пикселях
+        const pixelHeight = vhToPx(45); // 45vh
         heroParallax.style.height = pixelHeight + 'px';
     }
+
+    // Фиксируем отступы для контента
+    if (heroContent) {
+        const paddingTop = vhToPx(50); // 50vh
+        const paddingBottom = 80; // 80px уже в px, не нужно конвертировать
+        heroContent.style.paddingTop = paddingTop + 'px';
+        heroContent.style.paddingBottom = paddingBottom + 'px';
+    }
+
+    // Фиксируем отступ для заголовка
+    if (heroHeader) {
+        const marginBottom = Math.min(Math.max(vhToPx(3), 20), 40); // clamp(20px, 3vh, 40px)
+        heroHeader.style.marginBottom = marginBottom + 'px';
+    }
+
+    // Фиксируем расстояние между текстом (именами) и датой
+    const names = document.querySelector('.names');
+    if (names && weddingDate) {
+        // Получаем текущие позиции
+        const namesRect = names.getBoundingClientRect();
+        const dateRect = weddingDate.getBoundingClientRect();
+
+        // Вычисляем текущее расстояние между элементами
+        const currentGap = dateRect.top - namesRect.bottom;
+
+        // Устанавливаем минимальное расстояние (не менее 30px)
+        const minGap = Math.max(currentGap, 30);
+
+        // Устанавливаем margin-top для даты, чтобы сохранить это расстояние
+        weddingDate.style.marginTop = minGap + 'px';
+    }
+
+    // Фиксируем отступ для даты
+    if (weddingDate) {
+        const marginBottom = Math.min(Math.max(vhToPx(2), 40), 80); // clamp(40px, 2vh, 80px)
+        weddingDate.style.marginBottom = marginBottom + 'px';
+    }
+
+    // Фиксируем положение аудиоконтрола
+    if (audioControls) {
+        const bottom = 1; // 15px
+        const right = 1; // 15px
+        audioControls.style.bottom = bottom + 'px';
+        audioControls.style.right = right + 'px';
+    }
+
+    // Дополнительно фиксируем размеры шрифтов
+    const elementsWithRelativeFont = document.querySelectorAll('.hero h1, .names, .wedding-date span, .hint-text');
+    elementsWithRelativeFont.forEach(element => {
+        // Получаем текущий размер шрифта после применения всех стилей
+        const currentSize = parseFloat(window.getComputedStyle(element).fontSize);
+        // Устанавливаем фиксированный размер
+        element.style.fontSize = currentSize + 'px';
+    });
+
+    // Фиксируем размеры иконок
+    const icons = document.querySelectorAll('.hint-arrow, .sound-icon');
+    icons.forEach(icon => {
+        const computedStyle = window.getComputedStyle(icon);
+        const width = parseFloat(computedStyle.width);
+        const height = parseFloat(computedStyle.height);
+
+        icon.style.width = width + 'px';
+        icon.style.height = height + 'px';
+    });
 });
 
 const audio = document.getElementById('background-music');
