@@ -164,6 +164,19 @@ const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 //     }
 // });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим элемент с картинкой
+    const heroParallax = document.querySelector('.hero-parallax');
+
+    if (heroParallax) {
+        // Вычисляем текущую высоту (45vh в пикселях)
+        const pixelHeight = window.innerHeight * 0.45;
+
+        // Устанавливаем фиксированную высоту в пикселях
+        heroParallax.style.height = pixelHeight + 'px';
+    }
+});
+
 const audio = document.getElementById('background-music');
 const muteButton = document.getElementById('mute-button');
 const soundOnIcon = muteButton.querySelector('.sound-on');

@@ -125,7 +125,7 @@ nav a:hover {
     left: 20px; /* Добавляем отступ слева */
     right: 20px; /* Добавляем отступ справа */
     width: calc(100% - 40px); /* Уменьшаем ширину с учетом отступов */
-    height: 45vh;
+    /*height: 45vh;*/
     z-index: -1;
     overflow: hidden;
     border-radius: 10px;
