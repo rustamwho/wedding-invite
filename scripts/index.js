@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 section.style.transform = 'translateY(0)';
             }, 200 * index);
         });
-    }, 1000); // Увеличил задержку для лучшего эффекта
+    }, 2000); // Увеличил задержку для лучшего эффекта
 });
 
 const audio = document.getElementById('background-music');
