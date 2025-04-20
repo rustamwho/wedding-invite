@@ -804,6 +804,69 @@ section:not(.hero) {
     transform: scale(1.05);
 }
 
+/* Секция с деталями */
+.details-section {
+    padding: 80px 20px;
+    background: transparent;
+    color: #000000;
+    text-align: center;
+}
+
+.details-section h2 {
+    font-family: 'Extra light wedding', Arial, sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #000000;
+}
+
+.details-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.detail-item {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.detail-item h3 {
+    font-family: 'Extra light wedding', Arial, sans-serif;
+    font-size: 1.5em;
+    color: #bba88a;
+    margin-bottom: 15px;
+}
+
+.detail-item p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1em;
+    color: #ffffff;
+    line-height: 1.5;
+    max-width: 100%;
+}
+
+/* Анимации для секции деталей */
+.details-section h2 {
+    animation-delay: 0.2s;
+}
+
+.details-content .detail-item:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.details-content .detail-item:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
 /* Секция формы */
 .form-section {
     color: #000000;
@@ -935,6 +998,29 @@ button:hover {
     margin-bottom: 20px;
 }
 
+/* Стили для блока с именем и номером телефона */
+.organizer-contact {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bolder;
+    font-size: 1.3em;
+    margin: 15px 0;
+    color: #292828;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.organizer-contact a {
+    color: #292828;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.organizer-contact a:hover {
+    color: #474545;
+}
+
 .social-links {
     display: flex;
     justify-content: center;
@@ -948,7 +1034,7 @@ button:hover {
 }
 
 .social-links a:hover {
-    color: #D4A373;
+    color: #614a33;
     transform: translateY(-5px);
 }
 
@@ -956,7 +1042,6 @@ button:hover {
 .timer-section {
     position: relative;
     padding: 5vh 0 2vh;
-    /*color: white;*/
     color: #bba88a;
     text-align: center;
 }
