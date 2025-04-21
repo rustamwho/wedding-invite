@@ -739,9 +739,9 @@ section:not(.hero) {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 2px solid #D4A373;
+    /*border: 1px solid black;*/
     transition: transform 0.5s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .color-circle:hover {
