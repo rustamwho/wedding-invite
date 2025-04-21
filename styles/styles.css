@@ -739,13 +739,20 @@ section:not(.hero) {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    /*border: 1px solid black;*/
-    transition: transform 0.5s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    animation: spin 4s linear infinite;
 }
 
-.color-circle:hover {
-    transform: rotate(360deg) scale(1.1);
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .dress-examples {
