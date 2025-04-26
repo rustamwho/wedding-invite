@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Приглашение на свадьбу</title>
-    <!-- Подключаем стили -->
     <link href="styles/styles.css" rel="stylesheet">
-    <!-- Подключаем FontAwesome для иконок соцсетей -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,23 +30,20 @@
         <img src="styles/img/black.jpg" alt="Свадебный фон" class="hero-bg">
     </div>
     <div class="hero-content">
-        <!-- Перемещаем заголовок и имена наверх -->
         <div class="hero-header">
             <h1 class="animate-scale">WEDDING DAY</h1>
             <div class="names animate-fade">
                 <span>РУСТАМ & АДЕЛИНА</span>
             </div>
         </div>
-        <!-- Добавляем дату на место заголовка -->
+
         <div class="wedding-date animate-fade">
             <span>05 | 07 | 2025</span>
         </div>
-        <!-- Аудиоконтроллер остается на месте -->
+
         <audio id="background-music" loop>
-<!--            <source src="https://dl.dropboxusercontent.com/scl/fi/sxjng3rsxkfhee6zrv50q/music_ph_33.mp3?rlkey=7s2niylzk9x6qd2wu6nur8yhy&dl=0"-->
             <source src="https://dl.dropboxusercontent.com/scl/fi/huk7c8ukkxanucw5mue8y/site_background.mp3?rlkey=5coqtxtc123o3ausu8cjo0u55&st=duequ1co&dl=0"
                     type="audio/mpeg">
-<!--            Ваш браузер не поддерживает воспроизведение аудио.-->
         </audio>
         <div class="audio-controls">
             <div class="audio-hint">
@@ -78,11 +73,13 @@
     </div>
 </section>
 
+<!-- Секция с обращением -->
 <section class="invitation container">
     <h2><span id="guest-appeal">Дорогие родные и близкие!</span></h2>
     <p> Приглашаем разделить радость особенного для нас дня и стать частью начала нашей семейной истории!</p>
 </section>
 
+<!-- Секция локации -->
 <section class="venue-section container">
     <div class="venue-info">
         <span class="pearl pearl-1"></span>
@@ -101,7 +98,6 @@
     <h2 class="animate-slide-up">TIMING</h2>
     <div class="schedule-container">
         <div class="timeline">
-            <!-- Сбор гостей -->
             <div class="schedule-item animate-slide-up">
                 <div class="schedule-icon left-side">
                     <img src="styles/img/glasses.png" alt="Иконка сбор гостей" class="schedule-img">
@@ -111,7 +107,7 @@
                     <span class="event">Фуршет</span>
                 </div>
             </div>
-            <!-- Церемония -->
+
             <div class="schedule-item animate-slide-up">
                 <div class="schedule-icon left-side">
                     <img src="styles/img/rings.png" alt="Иконка церемонии" class="schedule-img">
@@ -121,7 +117,7 @@
                     <span class="event">Церемония</span>
                 </div>
             </div>
-            <!-- Банкет -->
+
             <div class="schedule-item animate-slide-up">
                 <div class="schedule-icon left-side">
                     <img src="styles/img/tableware.png" alt="Иконка банкета" class="schedule-img">
@@ -131,7 +127,7 @@
                     <span class="event">Банкет</span>
                 </div>
             </div>
-            <!-- Торт -->
+
             <div class="schedule-item animate-slide-up">
                 <div class="schedule-icon left-side">
                     <img src="styles/img/cake.png" alt="Иконка торта" class="schedule-img">
@@ -141,7 +137,7 @@
                     <span class="event">Торт</span>
                 </div>
             </div>
-            <!-- Окончание -->
+
             <div class="schedule-item animate-slide-up">
                 <div class="schedule-icon left-side">
                     <img src="styles/img/moon.png" alt="Завершение" class="schedule-img">
@@ -155,6 +151,7 @@
     </div>
 </section>
 
+<!-- Секция дресс-код -->
 <section class="dress-code-section container">
     <div class="dress-code-info animate-slide-up">
         <h2>DRESS CODE</h2>
@@ -291,7 +288,6 @@
     <p class="animate-fade">© 2025 Наша свадьба</p>
 </footer>
 
-<!-- Подключаем JavaScript -->
 <script src="scripts/index.js"></script>
 </body>
 </html>

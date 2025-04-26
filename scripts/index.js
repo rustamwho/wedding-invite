@@ -1,42 +1,139 @@
-// Таймер обратного отсчета до 5 июля 2025
-function updateCountdown() {
-    const weddingDate = new Date('July 5, 2025 15:00:00').getTime();
-    const now = new Date().getTime();
-    const timeLeft = weddingDate - now;
+const audio = document.getElementById('background-music');
+const muteButton = document.getElementById('mute-button');
+const soundOnIcon = muteButton.querySelector('.sound-on');
+const soundOffIcon = muteButton.querySelector('.sound-off');
+let isPlaying = false;
 
-    // Вычисляем дни, часы, минуты, секунды
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-    // Если время вышло
-    if (timeLeft < 0) {
-        clearInterval(countdownInterval);
-        document.getElementById('countdown').innerHTML = '<p>Свадьба состоялась!</p>';
+function toggleMusic() {
+    if (isPlaying) {
+        audio.pause();
+        soundOnIcon.style.display = 'none';
+        soundOffIcon.style.display = 'block';
+    } else {
+        audio.play().then(() => {
+            soundOnIcon.style.display = 'block';
+            soundOffIcon.style.display = 'none';
+        }).catch(error => {
+            console.log('Ошибка воспроизведения:', error);
+        });
     }
-
-    updateWithAnimation('days', days);
-    updateWithAnimation('hours', hours);
-    updateWithAnimation('minutes', minutes);
-    updateWithAnimation('seconds', seconds);
+    isPlaying = !isPlaying;
 }
 
-function updateWithAnimation(elementId, newValue) {
-    const element = document.getElementById(elementId);
-    const oldValue = element.textContent;
+window.addEventListener('load', () => {
+    audio.play().then(() => {
+        isPlaying = true;
+        soundOnIcon.style.display = 'block';
+        soundOffIcon.style.display = 'none';
+    }).catch(error => {
+        console.log('Заблокировано:(', error);
+        soundOnIcon.style.display = 'none';
+        soundOffIcon.style.display = 'block';
+    });
+});
 
-    if (oldValue !== newValue.toString()) {
-        element.textContent = newValue;
-        element.classList.add('update');
-        setTimeout(() => element.classList.remove('update'), 500);
+
+document.addEventListener('DOMContentLoaded', function () {
+    function vhToPx(vh) {
+        return (window.innerHeight * vh) / 100;
     }
-}
 
-// Запускаем таймер
-const countdownInterval = setInterval(updateCountdown, 1000);
+    const hero = document.querySelector('.hero');
+    const heroParallax = document.querySelector('.hero-parallax');
+    const heroContent = document.querySelector('.hero-content');
+    const heroHeader = document.querySelector('.hero-header');
+    const weddingDate = document.querySelector('.wedding-date');
 
-// Персонализация обращения к гостям через параметры URL
+    if (hero) {
+        const pixelHeight = vhToPx(100);
+        hero.style.height = pixelHeight + 'px';
+    }
+
+    if (heroParallax) {
+        const pixelHeight = vhToPx(55);
+        heroParallax.style.height = pixelHeight + 'px';
+    }
+
+    // Фиксируем отступы для контента
+    if (heroContent) {
+        const paddingTop = vhToPx(55);
+        const paddingBottom = 40;
+        heroContent.style.paddingTop = paddingTop + 'px';
+        heroContent.style.paddingBottom = paddingBottom + 'px';
+    }
+
+    // Фиксируем отступ для заголовка
+    if (heroHeader) {
+        const marginBottom = Math.min(Math.max(vhToPx(5), 10), 100);
+        heroHeader.style.marginBottom = marginBottom + 'px';
+    }
+
+    // Фиксируем расстояние между именами и датой
+    const names = document.querySelector('.names');
+    if (names && weddingDate) {
+        const namesRect = names.getBoundingClientRect();
+        const dateRect = weddingDate.getBoundingClientRect();
+
+        const currentGap = dateRect.top - namesRect.bottom;
+
+        const minGap = Math.max(currentGap, 1);
+
+        weddingDate.style.marginTop = minGap + 'px';
+    }
+
+    // Фиксируем отступ для даты
+    if (weddingDate) {
+        const marginBottom = Math.min(Math.max(vhToPx(2), 40), 80);
+        weddingDate.style.marginBottom = marginBottom + 'px';
+    }
+
+    // Фиксируем размеры шрифтов
+    const elementsWithRelativeFont = document.querySelectorAll('.hero h1, .names, .wedding-date span, .hint-text, .timer-heading h3, footer p, .timer-container span');
+    elementsWithRelativeFont.forEach(element => {
+        const currentSize = parseFloat(window.getComputedStyle(element).fontSize);
+
+        element.style.fontSize = currentSize + 'px';
+    });
+
+    // Фиксируем размеры иконок
+    const icons = document.querySelectorAll('.hint-arrow, .sound-icon');
+    icons.forEach(icon => {
+        const computedStyle = window.getComputedStyle(icon);
+        const width = parseFloat(computedStyle.width);
+        const height = parseFloat(computedStyle.height);
+
+        icon.style.width = width + 'px';
+        icon.style.height = height + 'px';
+    });
+
+    const loadingScreen = document.getElementById('loading-screen');
+    const otherSections = document.querySelectorAll('section:not(.hero)');
+
+    setTimeout(function () {
+        // Скрываем загрузочный экран
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.visibility = 'hidden';
+        }
+
+        // Плавно показываем hero секцию
+        if (hero) {
+            hero.style.opacity = '1';
+        }
+
+        // Плавно показываем остальные секции с задержкой
+        otherSections.forEach((section, index) => {
+            setTimeout(() => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }, 200 * index);
+        });
+    }, 2000);
+});
+
+
+
+// Персонализация обращения к гостям
 function personalizeAppeal() {
     const params = new URLSearchParams(window.location.search);
     const guest1 = params.get('q1');
@@ -83,7 +180,7 @@ document.getElementById('wedding-form').addEventListener('submit', function (e) 
 
     // Валидация
     if (!name) {
-        modalMessage.textContent = 'Пожалуйста, укажите ваше имя и фамилию.';
+        modalMessage.textContent = 'Пожалуйста, укажите ваше имя и фамилию';
         modal.style.display = 'flex';
         setTimeout(() => {
             modal.style.display = 'none';
@@ -173,150 +270,39 @@ document.getElementById('wedding-form').addEventListener('submit', function (e) 
     }, 3000);
 });
 
-// Глобальные переменные
-let lastScrollPosition = 0;
-let ticking = false;
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Функция для преобразования vh в пиксели
-    function vhToPx(vh) {
-        return (window.innerHeight * vh) / 100;
+// Таймер
+function updateCountdown() {
+    const weddingDate = new Date('July 5, 2025 15:00:00').getTime();
+    const now = new Date().getTime();
+    const timeLeft = weddingDate - now;
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    if (timeLeft < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').innerHTML = '<p>Свадьба состоялась!</p>';
     }
 
-    // Получаем все необходимые элементы
-    const hero = document.querySelector('.hero');
-    const heroParallax = document.querySelector('.hero-parallax');
-    const heroContent = document.querySelector('.hero-content');
-    const heroHeader = document.querySelector('.hero-header');
-    const weddingDate = document.querySelector('.wedding-date');
-    // const audioControls = document.querySelector('.audio-controls');
-
-    // Фиксируем высоту картинки
-    if (hero) {
-        const pixelHeight = vhToPx(100); // 100vh
-        hero.style.height = pixelHeight + 'px';
-    }
-
-    // Фиксируем высоту картинки
-    if (heroParallax) {
-        const pixelHeight = vhToPx(55); // 45vh
-        heroParallax.style.height = pixelHeight + 'px';
-    }
-
-    // Фиксируем отступы для контента
-    if (heroContent) {
-        const paddingTop = vhToPx(55); // 50vh
-        const paddingBottom = 40; // 80px уже в px, не нужно конвертировать
-        heroContent.style.paddingTop = paddingTop + 'px';
-        heroContent.style.paddingBottom = paddingBottom + 'px';
-    }
-
-    // Фиксируем отступ для заголовка
-    if (heroHeader) {
-        const marginBottom = Math.min(Math.max(vhToPx(5), 10), 100); // clamp(20px, 3vh, 40px)
-        heroHeader.style.marginBottom = marginBottom + 'px';
-    }
-
-    // Фиксируем расстояние между текстом (именами) и датой
-    const names = document.querySelector('.names');
-    if (names && weddingDate) {
-        // Получаем текущие позиции
-        const namesRect = names.getBoundingClientRect();
-        const dateRect = weddingDate.getBoundingClientRect();
-
-        // Вычисляем текущее расстояние между элементами
-        const currentGap = dateRect.top - namesRect.bottom;
-
-        // Устанавливаем минимальное расстояние (не менее 30px)
-        const minGap = Math.max(currentGap, 1);
-
-        // Устанавливаем margin-top для даты, чтобы сохранить это расстояние
-        weddingDate.style.marginTop = minGap + 'px';
-    }
-
-    // Фиксируем отступ для даты
-    if (weddingDate) {
-        const marginBottom = Math.min(Math.max(vhToPx(2), 40), 80); // clamp(40px, 2vh, 80px)
-        weddingDate.style.marginBottom = marginBottom + 'px';
-    }
-
-    // Дополнительно фиксируем размеры шрифтов
-    const elementsWithRelativeFont = document.querySelectorAll('.hero h1, .names, .wedding-date span, .hint-text');
-    elementsWithRelativeFont.forEach(element => {
-        // Получаем текущий размер шрифта после применения всех стилей
-        const currentSize = parseFloat(window.getComputedStyle(element).fontSize);
-        // Устанавливаем фиксированный размер
-        element.style.fontSize = currentSize + 'px';
-    });
-
-    // Фиксируем размеры иконок
-    const icons = document.querySelectorAll('.hint-arrow, .sound-icon');
-    icons.forEach(icon => {
-        const computedStyle = window.getComputedStyle(icon);
-        const width = parseFloat(computedStyle.width);
-        const height = parseFloat(computedStyle.height);
-
-        icon.style.width = width + 'px';
-        icon.style.height = height + 'px';
-    });
-
-    const loadingScreen = document.getElementById('loading-screen');
-    const otherSections = document.querySelectorAll('section:not(.hero)');
-
-    setTimeout(function() {
-        // Скрываем загрузочный экран
-        if (loadingScreen) {
-            loadingScreen.style.opacity = '0';
-            loadingScreen.style.visibility = 'hidden';
-        }
-
-        // Плавно показываем hero секцию
-        if (hero) {
-            hero.style.opacity = '1';
-        }
-
-        // Плавно показываем остальные секции с задержкой
-        otherSections.forEach((section, index) => {
-            setTimeout(() => {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }, 200 * index);
-        });
-    }, 2000); // Увеличил задержку для лучшего эффекта
-});
-
-const audio = document.getElementById('background-music');
-const muteButton = document.getElementById('mute-button');
-const soundOnIcon = muteButton.querySelector('.sound-on');
-const soundOffIcon = muteButton.querySelector('.sound-off');
-let isPlaying = false;
-
-function toggleMusic() {
-    if (isPlaying) {
-        audio.pause();
-        soundOnIcon.style.display = 'none';
-        soundOffIcon.style.display = 'block';
-    } else {
-        audio.play().then(() => {
-            soundOnIcon.style.display = 'block';
-            soundOffIcon.style.display = 'none';
-        }).catch(error => {
-            console.log('Ошибка воспроизведения:', error);
-        });
-    }
-    isPlaying = !isPlaying;
+    updateWithAnimation('days', days);
+    updateWithAnimation('hours', hours);
+    updateWithAnimation('minutes', minutes);
+    updateWithAnimation('seconds', seconds);
 }
 
-// Попытка автопроигрывания при загрузке
-window.addEventListener('load', () => {
-    audio.play().then(() => {
-        isPlaying = true;
-        soundOnIcon.style.display = 'block';
-        soundOffIcon.style.display = 'none';
-    }).catch(error => {
-        console.log('Заблокировано:(', error);
-        soundOnIcon.style.display = 'none';
-        soundOffIcon.style.display = 'block';
-    });
-});
+function updateWithAnimation(elementId, newValue) {
+    const element = document.getElementById(elementId);
+    const oldValue = element.textContent;
+
+    if (oldValue !== newValue.toString()) {
+        element.textContent = newValue;
+        element.classList.add('update');
+        setTimeout(() => element.classList.remove('update'), 500);
+    }
+}
+
+// Запускаем таймер
+const countdownInterval = setInterval(updateCountdown, 1000);
