@@ -17,7 +17,6 @@ html, body {
     -webkit-font-smoothing: antialiased;
 }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -36,7 +35,6 @@ body {
 body.loading {
     overflow: hidden;
 }
-
 
 /* Фоновое изображение для всей страницы */
 #background {
@@ -205,13 +203,6 @@ nav a:hover {
     transition: opacity 1.5s ease-in-out;
 }
 
-/*!* Плавное появление для других секций *!*/
-/*section:not(.hero) {*/
-/*    opacity: 0;*/
-/*    transform: translateY(20px);*/
-/*    transition: opacity 1s ease-in-out, transform 1s ease-in-out;*/
-/*}*/
-
 .hero-parallax {
     position: absolute;
     top: 20px;
@@ -279,7 +270,6 @@ nav a:hover {
     letter-spacing: 0.1em;
 }
 
-
 /* Стили для аудио-контроллера */
 .audio-controls {
     position: relative;
@@ -289,7 +279,6 @@ nav a:hover {
     display: flex;
     align-items: center;
     align-self: flex-end; /* Выравнивает по правому краю */
-    /*margin-top: auto; !* Отодвигает в конец flex-контейнера *!*/
     gap: clamp(0.5rem, 1vw, 1rem); /* Расстояние между надписью и кнопкой */
 }
 
@@ -1137,16 +1126,45 @@ footer p {
 }
 
 /* Опционально: добавляем небольшие задержки для последовательного появления */
-.reveal:nth-child(1) { transition-delay: 0ms; }
-.reveal:nth-child(2) { transition-delay: 50ms; }
-.reveal:nth-child(3) { transition-delay: 100ms; }
-.reveal:nth-child(4) { transition-delay: 150ms; }
-.reveal:nth-child(5) { transition-delay: 200ms; }
-.reveal:nth-child(6) { transition-delay: 250ms; }
-.reveal:nth-child(7) { transition-delay: 300ms; }
-.reveal:nth-child(8) { transition-delay: 350ms; }
-.reveal:nth-child(9) { transition-delay: 400ms; }
-.reveal:nth-child(10) { transition-delay: 450ms; }
+.reveal:nth-child(1) {
+    transition-delay: 0ms;
+}
+
+.reveal:nth-child(2) {
+    transition-delay: 50ms;
+}
+
+.reveal:nth-child(3) {
+    transition-delay: 100ms;
+}
+
+.reveal:nth-child(4) {
+    transition-delay: 150ms;
+}
+
+.reveal:nth-child(5) {
+    transition-delay: 200ms;
+}
+
+.reveal:nth-child(6) {
+    transition-delay: 250ms;
+}
+
+.reveal:nth-child(7) {
+    transition-delay: 300ms;
+}
+
+.reveal:nth-child(8) {
+    transition-delay: 350ms;
+}
+
+.reveal:nth-child(9) {
+    transition-delay: 400ms;
+}
+
+.reveal:nth-child(10) {
+    transition-delay: 450ms;
+}
 
 .reveal-fade {
     transform: translateY(0) scale(0.9);
