@@ -98,6 +98,7 @@ nav a {
 nav a:hover {
     color: #D4A373;
 }
+
 /* Загрузочный экран */
 #loading-screen {
     position: fixed;
@@ -105,7 +106,6 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    /*background-color: #ac987f;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,7 +165,6 @@ nav a:hover {
 
 /* Главная секция */
 .hero {
-    /*height: 100vh;*/
     position: relative;
     width: 100%;
     display: flex;
@@ -188,10 +187,9 @@ section:not(.hero) {
 .hero-parallax {
     position: absolute;
     top: 20px;
-    left: 20px; /* Добавляем отступ слева */
-    right: 20px; /* Добавляем отступ справа */
-    width: calc(100% - 40px); /* Уменьшаем ширину с учетом отступов */
-    /*height: 45vh;*/
+    left: 20px;
+    right: 20px;
+    width: calc(100% - 40px);
     z-index: -1;
     overflow: hidden;
     border-radius: 10px;
@@ -213,16 +211,14 @@ section:not(.hero) {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    /*padding: 50vh 20px 80px; !* Верхний отступ 50vh, нижний 80px для безопасной зоны *!*/
     box-sizing: border-box;
-    justify-content: flex-start; /* Равномерное распределение содержимого */
+    justify-content: flex-start;
 }
 
 /* Контейнер для заголовка и имен */
 .hero-header {
     width: 100%;
     text-align: center;
-    /*margin-bottom: clamp(20px, 3vh, 40px); !* Адаптивный отступ *!*/
 }
 
 .hero h1 {
@@ -292,123 +288,6 @@ section:not(.hero) {
     animation: arrow-move 1.5s ease-in-out infinite;
 }
 
-/*.hero {*/
-/*    height: 100vh;*/
-/*    overflow: hidden;*/
-/*    position: relative;*/
-/*    will-change: transform;*/
-/*    isolation: isolate; !* Изолируем контекст наложения *!*/
-/*    z-index: 1; !* Базовый z-index *!*/
-/*    width: 100%; !* Явно указываем полную ширину *!*/
-/*}*/
-
-/*.hero-parallax {*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 110%;*/
-/*    height: 110%; !* Больше контейнера для эффекта *!*/
-/*    z-index: -1;*/
-/*    will-change: transform;*/
-/*}*/
-
-/*.hero-bg {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    object-fit: cover;*/
-/*    display: block; !* Предотвращает лишние пиксели снизу *!*/
-/*}*/
-
-/*.hero::before {*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    background: rgba(0, 0, 0, 0.3); !* Полупрозрачный слой *!*/
-/*}*/
-
-/*.hero-content {*/
-/*    position: relative;*/
-/*    z-index: 1;*/
-/*    height: 100vh;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: flex-end;*/
-/*    align-items: center;*/
-/*    color: #fbfbfb;*/
-/*    text-align: center;*/
-/*}*/
-
-/*!* Контейнер для заголовка и имен (вверху) *!*/
-/*.hero-header {*/
-/*    position: absolute;*/
-/*    bottom: 50vh; !* Прижимаем к верхнему краю с небольшим отступом *!*/
-/*    text-align: center;*/
-/*}*/
-
-/*.hero h1 {*/
-/*    font-family: 'Extra light wedding', Arial, sans-serif;*/
-/*    font-size: clamp(2rem, 5vw, 8rem);*/
-/*    font-weight: 400;*/
-/*    margin-bottom: 1vh;*/
-/*    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
-/*}*/
-
-/*!* Стили для имен *!*/
-/*.names {*/
-/*    font-family: 'Extra light wedding', Arial, sans-serif;*/
-/*    font-size: clamp(3.5rem, 8vw, 10rem);*/
-/*    font-weight: 400;*/
-/*    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
-/*}*/
-
-/*!* Дата свадьбы *!*/
-/*.wedding-date {*/
-/*    margin-top: auto; !* Располагаем дату в центре по вертикали *!*/
-/*    margin-bottom: 20vh; !* Отступ снизу, чтобы не перекрывать аудиоконтроллер *!*/
-/*}*/
-
-/*.wedding-date span {*/
-/*    font-family: 'Playfair Display', serif;*/
-/*    font-size: clamp(2rem, 4vw, 4rem);*/
-/*    color: #ffffff;*/
-/*    letter-spacing: 0.1em;*/
-/*}*/
-
-/*!* Стили для аудио-контроллера *!*/
-/*.audio-controls {*/
-/*    position: absolute;*/
-/*    bottom: clamp(10vh, 11vh, 16vh);*/
-/*    right: clamp(3vw, 5vw, 7vw);*/
-/*    z-index: 2;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    gap: clamp(0.5rem, 1vw, 1rem); !* Расстояние между надписью и кнопкой *!*/
-/*}*/
-
-/*.audio-hint {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    gap: clamp(0.3rem, 0.5vw, 0.5rem); !* Расстояние между текстом и стрелкой *!*/
-/*}*/
-
-/*.hint-text {*/
-/*    font-family: Arial, sans-serif;*/
-/*    font-size: clamp(0.8rem, 1.5vw, 1.3rem); !* Размер текста от 0.8rem до 1.3rem *!*/
-/*    color: #F5F5DC;*/
-/*    opacity: 0.5;*/
-/*}*/
-
-/*.hint-arrow {*/
-/*    width: clamp(14px, 2vw, 24px);*/
-/*    height: clamp(14px, 2vw, 24px);*/
-/*    stroke: #F5F5DC;*/
-/*    opacity: 0.7;*/
-/*    animation: arrow-move 1.5s ease-in-out infinite;*/
-/*}*/
-
 /* Анимация для стрелочки */
 @keyframes arrow-move {
     0%, 100% {
@@ -429,13 +308,6 @@ section:not(.hero) {
     justify-content: center;
     flex-shrink: 0; /* Предотвращает сжатие кнопки */
 }
-
-/*.sound-icon {*/
-/*    width: 24px;*/
-/*    height: 24px;*/
-/*    stroke: #F5F5DC;*/
-/*    transition: stroke 0.3s ease;*/
-/*}*/
 
 .sound-icon {
     width: clamp(14px, 4vw, 18px); /* Уменьшенный размер */
@@ -580,24 +452,6 @@ section:not(.hero) {
     color: #1f1f1f;
 }
 
-/*.map-container {*/
-/*    margin-top: 20px;*/
-/*    max-width: 800px;*/
-/*    margin-left: auto;*/
-/*    margin-right: auto;*/
-/*    height: 300px;*/
-/*    border-radius: 10px;*/
-/*    overflow: hidden;*/
-/*    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);*/
-/*}*/
-
-/*.map-container iframe {*/
-/*    border-radius: 10px;*/
-/*    border: none;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-
 /* Расписание */
 .schedule-section {
     padding: 100px 20px; /* Вертикальный отступ секции */
@@ -643,7 +497,7 @@ section:not(.hero) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 60px; /* Минимальная высота для каждого элемента, чтобы избежать наложения */
+    min-height: 60px;
 }
 
 /* Белая точка на линии */
@@ -881,6 +735,7 @@ section:not(.hero) {
     text-align: center;
 }
 
+
 form {
     max-width: 350px;
     margin: 0 auto;
@@ -889,17 +744,20 @@ form {
     gap: 25px;
 }
 
+form.hidden {
+    display: none;
+}
+
 .form-field {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    /*background: rgba(0, 0, 0, 0.7);*/
     font-family: 'Raleway', sans-serif;
     background-color: #1f1f1f;
     padding: 20px;
     border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .form-field:hover {
@@ -907,10 +765,15 @@ form {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Скрытие блока с напитками */
+.form-field.hidden {
+    display: none;
+    opacity: 0;
+}
+
 .form-field label {
     font-size: 1.1em;
     margin-bottom: 10px;
-    /*color: #ffffff;*/
     color: #bba88a;
 }
 
@@ -926,7 +789,6 @@ form {
     display: flex;
     align-items: center;
     cursor: pointer;
-    /*color: #ffffff;*/
     color: #bba88a;
     font-size: 1em;
     transition: color 0.3s ease;
@@ -937,8 +799,7 @@ form {
     width: 100%;
     border: 1px solid #bba88a;
     border-radius: 5px;
-    /*background: rgba(221, 9, 9, 0.8);*/
-    background: #bba88a;;
+    background: #bba88a;
     color: #000000;
     font-size: 1em;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
@@ -954,7 +815,6 @@ button {
     padding: 15px 35px;
     font-size: 1.1em;
     background-color: #1f1f1f;
-    /*color: #ffffff;*/
     color: #bba88a;
     border: none;
     border-radius: 30px;
@@ -969,29 +829,56 @@ button {
 button:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    /*background-color: #c2915e;*/
 }
 
-.form-message {
-    margin-top: 20px;
-    font-size: 1.1em;
-    padding: 15px;
-    border-radius: 10px;
+/* Стили для модального окна */
+.modal {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
 }
 
-.form-message.success {
-    background-color: rgba(76, 175, 80, 0.2);
-    border: 1px solid #4CAF50;
-    color: #D4A373;
-    display: block;
+.modal-content {
+    background-color: #F5F5DC; /* Светло-бежевый фон */
+    padding: 20px 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(212, 163, 115, 0.5);
+    border: 1px solid #D4A373;
+    animation: scaleIn 0.4s ease forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.form-message.error {
-    background-color: rgba(244, 67, 54, 0.2);
-    border: 1px solid #F44336;
-    color: #ff5555;
-    display: block;
+.modal-icon {
+    width: 40px;
+    height: 40px;
+    stroke: #D4A373;
+    animation: heartbeat2 1.2s ease-in-out infinite;
+}
+
+.modal-content p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    color: #000000;
+    margin: 0;
+}
+
+@keyframes heartbeat2 {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.2); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.2); }
+    80% { transform: scale(1); }
+    100% { transform: scale(1); }
 }
 
 /* Соцсети */

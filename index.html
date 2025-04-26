@@ -211,6 +211,7 @@
     </div>
 </section>
 
+<!-- Секция с формой -->
 <section class="form-section container">
     <h2 class="animate-slide-up">RSVP</h2>
     <p class="animate-slide-up">Пожалуйста, заполните форму, чтобы мы могли лучше подготовиться.</p>
@@ -218,18 +219,18 @@
     <form id="wedding-form" target="hidden-iframe" class="animate-slide-up">
         <div class="form-field">
             <label for="name">Ваше имя и фамилия*</label>
-            <input type="text" id="name" name="entry.1501194167" required>
+            <input type="text" id="name" name="entry.1501194167">
         </div>
 
         <div class="form-field">
             <label>Сможете ли вы присутствовать?*</label>
             <div class="radio-group">
-                <label><input type="radio" name="entry.186441998" value="Приду" required> Приду</label>
+                <label><input type="radio" name="entry.186441998" value="Приду"> Приду</label>
                 <label><input type="radio" name="entry.186441998" value="Не смогу прийти"> Не смогу прийти</label>
             </div>
         </div>
 
-        <div class="form-field">
+        <div class="form-field" id="drinks-field">
             <label>Предпочтения по напиткам*</label>
             <div class="checkbox-group">
                 <label><input type="checkbox" name="entry.458437242" value="Белое вино"> Белое вино</label>
@@ -244,7 +245,15 @@
         <button type="submit" class="animate-scale">Отправить</button>
     </form>
 
-    <div id="form-message" class="form-message"></div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <svg class="modal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <p id="modal-message">Спасибо за ваш ответ!</p>
+        </div>
+    </div>
+
     <iframe name="hidden-iframe" style="display: none;"></iframe>
 </section>
 

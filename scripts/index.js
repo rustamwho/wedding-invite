@@ -55,6 +55,20 @@ function personalizeAppeal() {
 // Вызываем персонализацию при загрузке страницы
 window.addEventListener('load', personalizeAppeal);
 
+// Управление видимостью блока с напитками
+const confirmationRadios = document.querySelectorAll('input[name="entry.186441998"]');
+const drinksField = document.getElementById('drinks-field');
+
+confirmationRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        if (radio.value === 'Не смогу прийти') {
+            drinksField.classList.add('hidden');
+        } else {
+            drinksField.classList.remove('hidden');
+        }
+    });
+});
+
 // Валидация и отправка формы через iframe
 document.getElementById('wedding-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -62,107 +76,107 @@ document.getElementById('wedding-form').addEventListener('submit', function (e) 
     const name = document.getElementById('name').value.trim();
     const confirmation = document.querySelector('input[name="entry.186441998"]:checked');
     const drinks = document.querySelectorAll('input[name="entry.458437242"]:checked');
-    const messageElement = document.getElementById('form-message');
+    const modal = document.getElementById('modal');
+    const modalMessage = document.getElementById('modal-message');
+    const form = document.getElementById('wedding-form');
+    const formSection = document.querySelector('.form-section');
 
     // Валидация
     if (!name) {
-        messageElement.textContent = 'Пожалуйста, укажите ваше имя и фамилию.';
-        messageElement.classList.add('error');
-        messageElement.classList.remove('success');
-        messageElement.style.display = 'block';
+        modalMessage.textContent = 'Пожалуйста, укажите ваше имя и фамилию.';
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 2000);
         return;
     }
 
     if (!confirmation) {
-        messageElement.textContent = 'Пожалуйста, подтвердите ваше присутствие.';
-        messageElement.classList.add('error');
-        messageElement.classList.remove('success');
-        messageElement.style.display = 'block';
+        modalMessage.textContent = 'Пожалуйста, подтвердите ваше присутствие';
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 2000);
         return;
     }
 
-    if (drinks.length === 0) {
-        messageElement.textContent = 'Пожалуйста, выберите хотя бы одно предпочтение по напиткам.';
-        messageElement.classList.add('error');
-        messageElement.classList.remove('success');
-        messageElement.style.display = 'block';
+    // Проверяем напитки только если выбрано "Приду"
+    if (confirmation.value === 'Приду' && drinks.length === 0) {
+        modalMessage.textContent = 'Пожалуйста, выберите хотя бы один напиток';
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 2000);
         return;
     }
 
     // Динамически создаем форму для отправки
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfn2Fy3oUC-Jm-NKLfuEEEPPU2kO7bhNY1Og0MzOEyknRTCUQ/formResponse';
-    form.target = 'hidden-iframe';
-    form.style.display = 'none';
+    const submitForm = document.createElement('form');
+    submitForm.method = 'POST';
+    submitForm.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfn2Fy3oUC-Jm-NKLfuEEEPPU2kO7bhNY1Og0MzOEyknRTCUQ/formResponse';
+    submitForm.target = 'hidden-iframe';
+    submitForm.style.display = 'none';
 
     // Добавляем поле имени
     const nameField = document.createElement('input');
     nameField.type = 'text';
     nameField.name = 'entry.1501194167';
     nameField.value = name;
-    form.appendChild(nameField);
+    submitForm.appendChild(nameField);
 
     // Добавляем поле подтверждения
     const confirmationField = document.createElement('input');
     confirmationField.type = 'text';
     confirmationField.name = 'entry.186441998';
     confirmationField.value = confirmation.value;
-    form.appendChild(confirmationField);
+    submitForm.appendChild(confirmationField);
 
-    // Добавляем поля напитков
-    drinks.forEach((drink, ) => {
-        const drinkField = document.createElement('input');
-        drinkField.type = 'text';
-        drinkField.name = 'entry.458437242';
-        drinkField.value = drink.value;
-        form.appendChild(drinkField);
-    });
+    // Добавляем поля напитков, если выбрано "Приду"
+    if (confirmation.value === 'Приду') {
+        drinks.forEach((drink) => {
+            const drinkField = document.createElement('input');
+            drinkField.type = 'text';
+            drinkField.name = 'entry.458437242';
+            drinkField.value = drink.value;
+            submitForm.appendChild(drinkField);
+        });
+    }
 
     // Добавляем форму в документ и отправляем
-    document.body.appendChild(form);
-    form.submit();
+    document.body.appendChild(submitForm);
+    submitForm.submit();
 
-    // Показываем сообщение об успехе
-    messageElement.textContent = 'Спасибо за ваш ответ!';
-    messageElement.classList.add('success');
-    messageElement.classList.remove('error');
-    messageElement.style.display = 'block';
+    // Скрываем форму
+    form.classList.add('hidden');
 
-    // Очищаем форму
-    document.getElementById('wedding-form').reset();
+    // Показываем модальное окно с сообщением об успехе
+    modalMessage.textContent = 'Спасибо за ваш ответ!';
+    modal.style.display = 'flex';
 
-    // Скрываем сообщение через 5 секунд
+    // Очищаем форму (на всякий случай)
+    form.reset();
+    drinksField.classList.remove('hidden');
+
+    // Скрываем модальное окно через 2 секунды
     setTimeout(() => {
-        messageElement.style.display = 'none';
-    }, 5000);
+        modal.style.display = 'none';
+
+        // Добавляем сообщение после закрытия модального окна
+        const thankYouMessage = document.createElement('p');
+        thankYouMessage.textContent = 'Спасибо, что ответили!';
+        thankYouMessage.style.fontFamily = "'Extra light wedding', sans-serif";
+        thankYouMessage.style.fontSize = '1.3em';
+        thankYouMessage.style.color = '#000000';
+        thankYouMessage.style.marginTop = '20px';
+        thankYouMessage.classList.add('animate-slide-up');
+        formSection.appendChild(thankYouMessage);
+    }, 3000);
 });
 
 // Глобальные переменные
 let lastScrollPosition = 0;
 let ticking = false;
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-// // Функция обновления параллакса
-// function updateParallax() {
-//     const parallaxElement = document.querySelector('.hero-parallax');
-//
-//     if (parallaxElement) {
-//         const parallaxSpeed = isTouchDevice ? 0.15 : 0.4;
-//         parallaxElement.style.transform = `translateY(${lastScrollPosition * parallaxSpeed}px)`;
-//     }
-//     ticking = false;
-// }
-//
-// // Обработчик прокрутки с оптимизацией
-// window.addEventListener('scroll', function() {
-//     lastScrollPosition = window.scrollY;
-//
-//     if (!ticking) {
-//         window.requestAnimationFrame(updateParallax);
-//         ticking = true;
-//     }
-// });
 
 document.addEventListener('DOMContentLoaded', function() {
     // Функция для преобразования vh в пиксели
@@ -226,14 +240,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const marginBottom = Math.min(Math.max(vhToPx(2), 40), 80); // clamp(40px, 2vh, 80px)
         weddingDate.style.marginBottom = marginBottom + 'px';
     }
-
-    // Фиксируем положение аудиоконтрола
-    // if (audioControls) {
-    //     const bottom = 10; // 15px
-    //     const right = 20; // 15px
-    //     audioControls.style.bottom = bottom + 'px';
-    //     audioControls.style.marginRight = right + 'px';
-    // }
 
     // Дополнительно фиксируем размеры шрифтов
     const elementsWithRelativeFont = document.querySelectorAll('.hero h1, .names, .wedding-date span, .hint-text');
