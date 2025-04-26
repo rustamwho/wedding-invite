@@ -47,34 +47,31 @@ document.addEventListener('DOMContentLoaded', function () {
     const heroContent = document.querySelector('.hero-content');
     const heroHeader = document.querySelector('.hero-header');
     const weddingDate = document.querySelector('.wedding-date');
-    // const otherSections = document.querySelectorAll('section:not(.hero)');
-    //
-    // otherSections.forEach(section => {
-    //     section.classList.add('reveal');
-    // });
 
     const elementsToReveal = document.querySelectorAll(`
-        section:not(.hero) > h1, 
-        section:not(.hero) > div, 
-        section:not(.hero) > h2, 
-        section:not(.hero) > p, 
-        .venue-info > *, 
+        section:not(.hero) h2, 
+        section:not(.hero) h3,
+        section:not(.hero) p, 
+        section:not(.hero) .color-palette,
+        section:not(.hero) .example,
+        section:not(.hero) .gallery,
+        section:not(.hero) .gallery img,
+        section:not(.hero) a,
+        section:not(.hero) i,
+        .venue-info *, 
+        .timeline,
         .schedule-item, 
         .detail-item, 
-        .form-field, 
-        .example, 
-        .color-palette`);
+        .form-field,
+        #wedding-form,
+        #wedding-form button,
+        form button[type="submit"],
+        .social-links a
+    `);
 
-    // elementsToReveal.forEach(element => {
-    //     element.classList.add('reveal');
-    // });
-    elementsToReveal.forEach((element, index) => {
+    elementsToReveal.forEach((element) => {
         element.classList.add('reveal');
         element.classList.add('reveal-fade');
-        // // Можно добавить разные стили анимации для разнообразия
-        // if (index % 3 === 0) element.classList.add('reveal-left');
-        // else if (index % 3 === 1) element.classList.add('reveal-right');
-        // else element.classList.add('reveal-fade');
     });
 
     // Создаем Intersection Observer
@@ -184,98 +181,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }, 2000);
 });
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     function vhToPx(vh) {
-//         return (window.innerHeight * vh) / 100;
-//     }
-//
-//     const hero = document.querySelector('.hero');
-//     const heroParallax = document.querySelector('.hero-parallax');
-//     const heroContent = document.querySelector('.hero-content');
-//     const heroHeader = document.querySelector('.hero-header');
-//     const weddingDate = document.querySelector('.wedding-date');
-//
-//     if (hero) {
-//         const pixelHeight = vhToPx(100);
-//         hero.style.height = pixelHeight + 'px';
-//     }
-//
-//     if (heroParallax) {
-//         const pixelHeight = vhToPx(55);
-//         heroParallax.style.height = pixelHeight + 'px';
-//     }
-//
-//     // Фиксируем отступы для контента
-//     if (heroContent) {
-//         const paddingTop = vhToPx(55);
-//         const paddingBottom = 40;
-//         heroContent.style.paddingTop = paddingTop + 'px';
-//         heroContent.style.paddingBottom = paddingBottom + 'px';
-//     }
-//
-//     // Фиксируем отступ для заголовка
-//     if (heroHeader) {
-//         const marginBottom = Math.min(Math.max(vhToPx(5), 10), 100);
-//         heroHeader.style.marginBottom = marginBottom + 'px';
-//     }
-//
-//     // Фиксируем расстояние между именами и датой
-//     const names = document.querySelector('.names');
-//     if (names && weddingDate) {
-//         const namesRect = names.getBoundingClientRect();
-//         const dateRect = weddingDate.getBoundingClientRect();
-//
-//         const currentGap = dateRect.top - namesRect.bottom;
-//
-//         const minGap = Math.max(currentGap, 1);
-//
-//         weddingDate.style.marginTop = minGap + 'px';
-//     }
-//
-//     // Фиксируем отступ для даты
-//     if (weddingDate) {
-//         const marginBottom = Math.min(Math.max(vhToPx(2), 40), 80);
-//         weddingDate.style.marginBottom = marginBottom + 'px';
-//     }
-//
-//     // Фиксируем размеры шрифтов
-//     const elementsWithRelativeFont = document.querySelectorAll('.hero h1, .names, .wedding-date span, .hint-text, .timer-heading h3, footer p, .timer-container span');
-//     elementsWithRelativeFont.forEach(element => {
-//         const currentSize = parseFloat(window.getComputedStyle(element).fontSize);
-//
-//         element.style.fontSize = currentSize + 'px';
-//     });
-//
-//     // Фиксируем размеры иконок
-//     const icons = document.querySelectorAll('.hint-arrow, .sound-icon');
-//     icons.forEach(icon => {
-//         const computedStyle = window.getComputedStyle(icon);
-//         const width = parseFloat(computedStyle.width);
-//         const height = parseFloat(computedStyle.height);
-//
-//         icon.style.width = width + 'px';
-//         icon.style.height = height + 'px';
-//     });
-//
-//     const loadingScreen = document.getElementById('loading-screen');
-//     const otherSections = document.querySelectorAll('section:not(.hero)');
-//
-//     setTimeout(function () {
-//         // Скрываем загрузочный экран
-//         if (loadingScreen) {
-//             loadingScreen.style.opacity = '0';
-//             loadingScreen.style.visibility = 'hidden';
-//         }
-//
-//         // Плавно показываем hero секцию
-//         if (hero) {
-//             hero.style.opacity = '1';
-//         }
-//
-//     }, 2000);
-// });
-
 
 // Персонализация обращения к гостям
 function personalizeAppeal() {
@@ -450,108 +355,3 @@ function updateWithAnimation(elementId, newValue) {
 
 // Запускаем таймер
 const countdownInterval = setInterval(updateCountdown, 1000);
-
-// // Добавляем Intersection Observer для появления элементов при скролле
-// document.addEventListener('DOMContentLoaded', () => {
-//     const hiddenElements = document.querySelectorAll('.hidden');
-//
-//     const observer = new IntersectionObserver((entries, observer) => {
-//         entries.forEach(entry => {
-//             if (entry.isIntersecting) {
-//                 const element = entry.target;
-//
-//                 // Запускаем соответствующую анимацию
-//                 if (element.classList.contains('animate-fade')) {
-//                     element.style.animation = 'fadeIn 1s ease forwards';
-//                 } else if (element.classList.contains('animate-slide-up')) {
-//                     element.style.animation = 'slideUp 0.8s ease forwards';
-//                 } else if (element.classList.contains('animate-scale')) {
-//                     element.style.animation = 'scaleIn 0.8s ease forwards';
-//                 } else {
-//                     element.style.animation = 'slideUp 0.8s ease forwards';
-//                     // element.style.opacity = '1';
-//                     // element.style.transform = 'translateY(0)';
-//                 }
-//
-//                 // Добавляем задержки для вложенных элементов
-//                 const children = element.querySelectorAll('.animate-slide-up, .animate-fade, .animate-scale');
-//                 children.forEach((child, index) => {
-//                     if (child.classList.contains('animate-fade')) {
-//                         child.style.animation = `fadeIn 1s ease forwards ${index * 0.2}s`;
-//                     } else if (child.classList.contains('animate-slide-up')) {
-//                         child.style.animation = `slideUp 0.8s ease forwards ${index * 0.2}s`;
-//                     } else if (child.classList.contains('animate-scale')) {
-//                         child.style.animation = `scaleIn 0.8s ease forwards ${index * 0.2}s`;
-//                     }
-//                 });
-//
-//                 observer.unobserve(element); // Отключаем наблюдение после появления
-//             }
-//         });
-//     }, {
-//         rootMargin: '0px 0px -50px 0px', // Элементы появляются, когда они в 50px от нижней границы
-//         threshold: 0.1 // Срабатывает, когда 10% элемента видно
-//     });
-//
-//     hiddenElements.forEach(element => observer.observe(element));
-// });
-
-// Функция для отслеживания элементов при скролле
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150; // Насколько элемент должен быть виден
-
-        if (elementTop < windowHeight - elementVisible) {
-            element.classList.add('active');
-        } else {
-            element.classList.remove('active');
-        }
-    });
-}
-
-//
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Блокируем прокрутку при загрузке
-//     document.body.classList.add('loading');
-//
-//     const loadingScreen = document.getElementById('loading-screen');
-//     const hero = document.querySelector('.hero');
-//
-//     // Добавляем класс reveal ко всем секциям кроме первой
-//     const allSections = document.querySelectorAll('section:not(:first-child), .timer-section');
-//     allSections.forEach(section => {
-//         section.classList.add('reveal');
-//     });
-//
-//     // Обработка после загрузки всего контента
-//     window.addEventListener('load', function() {
-//         setTimeout(function() {
-//             // Скрываем загрузочный экран
-//             if (loadingScreen) {
-//                 loadingScreen.style.opacity = '0';
-//                 loadingScreen.style.visibility = 'hidden';
-//             }
-//
-//             // Плавно показываем hero секцию
-//             if (hero) {
-//                 hero.style.opacity = '1';
-//             }
-//
-//             // Разрешаем прокрутку после исчезновения загрузочного экрана
-//             setTimeout(function() {
-//                 document.body.classList.remove('loading');
-//
-//                 // Вызываем функцию первый раз для проверки элементов
-//                 revealOnScroll();
-//
-//                 // Добавляем обработчик события прокрутки
-//                 window.addEventListener('scroll', revealOnScroll);
-//             }, 500); // Задержка после исчезновения загрузочного экрана
-//
-//         }, 2000); // Время отображения загрузочного экрана
-//     });
-// });

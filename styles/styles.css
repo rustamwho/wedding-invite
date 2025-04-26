@@ -949,32 +949,18 @@ button:hover {
 }
 
 /* Стили для блока с именем и номером телефона */
-.organizer-contact {
-    font-family: 'Raleway', sans-serif;
+.organizer-name {
     font-weight: bolder;
     font-size: 1.3em;
     margin: 15px 0;
-    color: #292828;
     display: block;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-}
-
-.organizer-contact a {
-    color: #292828;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.organizer-contact a:hover {
-    color: #474545;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
 }
 
 .social-links a {
@@ -1035,7 +1021,6 @@ button:hover {
     min-width: 80px;
     max-width: 150px;
     padding: 8px;
-    /*padding: 0.5em;*/
     text-align: center;
     border-right: 1px solid #353535;
 }
@@ -1141,9 +1126,9 @@ footer p {
 /* Базовый стиль для скрытых элементов */
 .reveal {
     opacity: 0;
-    transform: translateY(150px); /* Увеличиваем отступ для более заметного эффекта */
+    transform: translateY(150px);
     transition: all 2s cubic-bezier(0.5, 0, 0, 1);
-    will-change: opacity, transform; /* Оптимизация производительности */
+    will-change: opacity, transform;
 }
 
 .reveal.active {
@@ -1157,149 +1142,16 @@ footer p {
 .reveal:nth-child(3) { transition-delay: 100ms; }
 .reveal:nth-child(4) { transition-delay: 150ms; }
 .reveal:nth-child(5) { transition-delay: 200ms; }
+.reveal:nth-child(6) { transition-delay: 250ms; }
+.reveal:nth-child(7) { transition-delay: 300ms; }
+.reveal:nth-child(8) { transition-delay: 350ms; }
+.reveal:nth-child(9) { transition-delay: 400ms; }
+.reveal:nth-child(10) { transition-delay: 450ms; }
 
-/* Разные стили анимации для разнообразия */
-/*.reveal-left {*/
-/*    transform: translateX(-50px);*/
-/*}*/
-/*.reveal-right {*/
-/*    transform: translateX(50px);*/
-/*}*/
 .reveal-fade {
     transform: translateY(0) scale(0.9);
 }
 
-/*.reveal-left.active, .reveal-right.active, */
 .reveal-fade.active {
     transform: translateX(0) scale(1);
 }
-
-/*!* Стили для эффекта появления при скролле *!*/
-/*.reveal {*/
-/*    opacity: 0;*/
-/*    transform: translateY(30px);*/
-/*    transition: opacity 0.8s ease, transform 0.8s ease;*/
-/*}*/
-
-/*.reveal.active {*/
-/*    opacity: 1;*/
-/*    transform: translateY(0);*/
-/*}*/
-
-/*!* Небольшая задержка для дочерних элементов *!*/
-/*.reveal > * {*/
-/*    opacity: 0;*/
-/*    transform: translateY(20px);*/
-/*    transition: opacity 0.8s ease, transform 0.8s ease;*/
-/*    transition-delay: 0.2s;*/
-/*}*/
-
-/*.reveal.active > * {*/
-/*    opacity: 1;*/
-/*    transform: translateY(0);*/
-/*}*/
-
-
-/*.animate-fade {*/
-/*    opacity: 0;*/
-/*    animation: fadeIn 1s ease forwards;*/
-/*}*/
-
-/*.animate-slide-up {*/
-/*    opacity: 0;*/
-/*    animation: slideUp 0.8s ease forwards;*/
-/*}*/
-
-/*.animate-scale {*/
-/*    opacity: 0;*/
-/*    animation: scaleIn 0.8s ease forwards;*/
-/*}*/
-
-/* Задержки для последовательных анимаций */
-/*.hero-content h1 {*/
-/*    animation-delay: 0.2s;*/
-/*}*/
-
-/*.hero-content .names {*/
-/*    animation-delay: 0.4s;*/
-/*}*/
-
-/*.invitation h2 {*/
-/*    animation-delay: 0.2s;*/
-/*}*/
-
-/*.invitation p {*/
-/*    animation-delay: 0.4s;*/
-/*}*/
-
-/*.invitation {*/
-/*    animation-delay: 0.6s;*/
-/*}*/
-
-/*.invitation .countdown {*/
-/*    animation-delay: 0.8s;*/
-/*}*/
-
-/*.venue-info h2 {*/
-/*    animation-delay: 0.2s;*/
-/*}*/
-
-/*.venue-info p {*/
-/*    animation-delay: 0.4s;*/
-/*}*/
-
-/*.venue-info {*/
-/*    animation-delay: 0.6s;*/
-/*}*/
-
-/*.venue-info .map-container {*/
-/*    animation-delay: 0.8s;*/
-/*}*/
-
-/*.venue-info .time-info {*/
-/*    animation-delay: 1s;*/
-/*}*/
-
-/*.dress-code-info h2 {*/
-/*    animation-delay: 0.2s;*/
-/*}*/
-
-/*.dress-code-info p {*/
-/*    animation-delay: 0.4s;*/
-/*}*/
-
-/*.dress-code-info .color-palette {*/
-/*    animation-delay: 0.6s;*/
-/*}*/
-
-/*.dress-code-info .dress-examples {*/
-/*    animation-delay: 0.8s;*/
-/*}*/
-
-/*.form-section h2 {*/
-/*    animation-delay: 0.2s;*/
-/*}*/
-
-/*.form-section p {*/
-/*    animation-delay: 0.4s;*/
-/*}*/
-
-/*.form-section form {*/
-/*    animation-delay: 0.6s;*/
-/*}*/
-
-/*.social h2 {*/
-/*    animation-delay: 0.2s;*/
-/*}*/
-
-/*.social .social-links {*/
-/*    animation-delay: 0.4s;*/
-/*}*/
-
-/*footer p:nth-child(1) {*/
-/*    animation-delay: 0.2s;*/
-/*}*/
-
-/*footer p:nth-child(2) {*/
-/*    animation-delay: 0.4s;*/
-/*}*/
