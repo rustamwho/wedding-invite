@@ -182,19 +182,58 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000);
 });
 
+const femaleNames = [
+    'Самира',
+    'Матур апа',
+    'Гульназ',
+    'Гульназ апа',
+    'Луиза',
+    'Зарина',
+    'Вика',
+    'Виктория',
+    'Лейсан',
+];
+
+const maleNames = [
+    'Радиф абый',
+    'Булат',
+    'Тимур',
+    'Инсаф',
+    'Данил',
+    'Даниил',
+    'Максим',
+];
+
+function determineGender(name) {
+    const normalizedName = name.toLowerCase();
+    if (femaleNames.map(n => n.toLowerCase()).includes(normalizedName)) {
+        return 'female';
+    } else if (maleNames.map(n => n.toLowerCase()).includes(normalizedName)) {
+        return 'male';
+    }
+    return 'unknown';
+}
+
 // Персонализация обращения к гостям
 function personalizeAppeal() {
     const params = new URLSearchParams(window.location.search);
     const guest1 = params.get('q1');
     const guest2 = params.get('q2');
+
+    const greetingElement = document.getElementById('greeting');
     const appealElement = document.getElementById('guest-appeal');
 
     if (guest1 && guest2) {
-        appealElement.textContent = `Дорогие ${guest1} и ${guest2}!`;
+        greetingElement.textContent = 'Дорогие';
+        appealElement.textContent = `${guest1} и ${guest2}!`;
     } else if (guest1) {
-        appealElement.textContent = `Дорогой(ая) ${guest1}!`;
+        const gender = determineGender(guest1);
+        const title = gender === 'female' ? 'Дорогая' : (gender === 'male' ? 'Дорогой' : 'Дорогой(ая)');
+        greetingElement.textContent = title;
+        appealElement.textContent = `${guest1}!`;
     } else {
-        appealElement.textContent = 'Дорогие гости!';
+        greetingElement.textContent = 'Дорогие';
+        appealElement.textContent = 'гости!';
     }
 }
 

@@ -335,10 +335,37 @@ nav a:hover {
     stroke: #D4A373; /* Тёмно-бежевый при наведении */
 }
 
-/* Секция приглашения */
+/* Стили приглашения */
 .invitation {
+    padding: 50px 20px;
     text-align: center;
-    padding: 80px 20px;
+}
+
+.invitation h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3em;
+}
+
+#greeting {
+    white-space: nowrap;
+}
+
+#guest-appeal {
+    white-space: normal;
+}
+
+.invitation p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    color: #000000;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* Секция места проведения */
