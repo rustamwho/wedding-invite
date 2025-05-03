@@ -214,11 +214,19 @@ function determineGender(name) {
     return 'unknown';
 }
 
+function decodeName(name) {
+    if (!name) return null;
+    let decoded = decodeURIComponent(name);
+    // Дополнительно заменяем %20 на пробел, если они остались
+    decoded = decoded.replace(/%20/g, ' ');
+    return decoded;
+}
+
 // Персонализация обращения к гостям
 function personalizeAppeal() {
     const params = new URLSearchParams(window.location.search);
-    const guest1 = params.get('q1');
-    const guest2 = params.get('q2');
+    const guest1 = decodeName(params.get('q1'));
+    const guest2 = decodeName(params.get('q2'));
 
     const greetingElement = document.getElementById('greeting');
     const appealElement = document.getElementById('guest-appeal');
