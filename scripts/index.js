@@ -185,6 +185,8 @@ document.addEventListener('DOMContentLoaded', function () {
 const femaleNames = [
     'Самира',
     'Матур апа',
+    'Гульнара',
+    'Гульнара апа',
     'Гульназ',
     'Гульназ апа',
     'Луиза',
